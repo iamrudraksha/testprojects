@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+  <html lang="en" itemscope itemtype="http://schema.org/Article" ng-app="challengeDetails"  ng-controller="CDCtrl as CD">
+<head>
+  <title ng-bind="CD.challenge.challengeName"></title>
+  <meta name="description" content="{{CD.challenge.detailedRequirements | htmlToText | limitTo: 155}}">
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="{{CD.challenge.challengeName}}">
+  <meta itemprop="description" content="{{CD.challenge.detailedRequirements | htmlToText }}">
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:site" content="@topcoder">
+  <meta name="twitter:title" content="{{CD.challenge.challengeName}}">
+  <meta name="twitter:description" content="{{CD.challenge.detailedRequirements | htmlToText | limitTo: 200}}">
+  <meta name="twitter:creator" content="@topcoder">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="{{CD.challenge.challengeName}}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{CD.challenge.url}}" />
+  <meta property="og:description" content="{{CD.challenge.detailedRequirements | htmlToText}}" />
+  <meta property="og:site_name" content="topcoder" />
+  <meta property="article:published_time" content="{{CD.challenge.postingDate}}" />
+
+  <meta charset="utf-8">
+  <meta name="fragment" content="!">
+  <meta name="author" content="@topcoder" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!--[if lt IE 9]>
+  <script src="/js/html5shiv.js" type="text/javascript"></script>
+  <script src="/js/respond.min.js" type="text/javascript"></script>
+  <script src="/js/modernizr.js" type="text/javascript"></script>
+  <link rel = "stylesheet" href = "/css/ie.css ? v = 201407282" / >
+  <![endif]-->
+  <script type="text/javascript">
+    // UNIVERSAL
+    var tcconfig = {"auth0ClientID":"6ZwZEUo2ZK4c50aLPpgupeg5v2Ffxp9P","auth0CallbackURL":"https://www.topcoder.com/reg2/callback.action","auth0LDAP":"LDAP","auth0URL":"topcoder.auth0.com","domain":"topcoder.com","mainURL":"https://www.topcoder.com","apiURL":"https://api.topcoder.com/v2","api3URL":"https://api.topcoder.com/v3","cdnURL":"/mf","useVer":false,"version":"","communityURL":"//community.topcoder.com","reviewAppURL":"software.topcoder.com/review","helpAppURL":"help.topcoder.com","forumsAppURL":"apps.topcoder.com/forums/","swiftProgramId":3445,"swiftProgramURL":"http://ios.topcoder.com","arenaURL":"//arena.topcoder.com","useGz":false,"useMin":1,"useCND":1,"myFiltersURL":"//lc1-user-settings-service.herokuapp.com","cbURL":"https://coderbits.com","blogRSSFeedURL":"https://www.topcoder.com/feed/?post_type=blog","photoLinkBaseURL":"https://www.topcoder.com","marketingMessageMyDashURL":"https://banners-r-us.herokuapp.com/serve?size=650x150"}
+
+    var wpUrl  = tcconfig.mainURL;
+
+    var tcApiRUL = tcconfig.apiURL;
+    var myFiltersURL = tcconfig.myFiltersURL;
+
+    var siteURL = tcconfig.mainURL;
+    var communityURL = tcconfig.communityURL;
+    
+    var base_url = tcconfig.mainURL + '/wp-content/themes/tcs-responsive'; // can use '' ?
+    var stylesheet_dir = tcconfig.mainURL + '/wp-content/themes/tcs-responsive/css';
+    var timezone_string = "America/New_York";
+    var challengeType = 'develop';
+
+    var cbApiURL = tcconfig.cbURL;
+
+    window.prerenderReady = false;
+    
+    function getParameterByName(name, source) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(source || location.search);
+      return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    function getHashParameterByName(name, source) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\#&]" + name + "=([^&#]*)"),
+      results = regex.exec(source || location.hash);
+      return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    // CHALLENGE DETAILS
+    var autoRegister = getParameterByName('autoRegister');
+  </script>
+
+  <!-- HARDCODED FOR NOW -->
+  <link rel="shortcut icon" href="//www.topcoder.com/wp-content/themes/tcs-responsive/favicon.ico" />
+
+  <link rel='stylesheet' href='/mf/css/ng-details.min.css?ver=aad7422' type='text/css' media='all' />
+
+  <meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI" />
+  <meta name="google-site-verification" content="p0OVxcrMQ2HYDsGgaRLRS9bsXuXmjKVcTGZnXNphIUI" />
+
+  <style>
+    .btn, a.btn, .blogCategoryMenu a, .searchBox input, .subscribeBox input {
+      behavior: url("/wp-content/themes/tcs-responsive/css/PIE.htc");
+    }
+  </style>
+
+  <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body>
+<div id="wrapper" class="tcssoUsingJS">
+<div class="ng-header-bootstrap"></div>
+<!-- Bugfix: I-108496 hidden element needed for non-firefox browsers to detect cache-persist status of page, used for above code to display member details -->
+<input type='hidden' id='cache-persist'>
+
+
+
+<div id="cdNgMain" ng-init="CD.callComplete=false" ng-show="CD.callComplete" class="hide content challenge-detail view-challenge-result {{CD.challengeType != 'design' ? 'develop' : ''}}">
+<div id="main">
+<div class="cd-wrapper">
+  <div ng-include src="getTemplateURL('ng-content-basic-challenge-details.tpl.html')" class="header-container"></div>
+  <article id="mainContent" class="splitLayout">
+    <div class="container">
+      <div id="stepBox">
+        <div class="container rightSplit  grid-3-3">
+
+          <div class="leftColumn">
+            <a ng-show="!CD.isDesign" ng-click="CD.registerToChallenge()" ng-class="{disabled:CD.challenge.registrationDisabled || !CD.callComplete, disabledNOT:!CD.challenge.registrationDisabled}" class="btn btnAction challengeRegisterBtn" href="javascript:;">
+                <span>1</span><strong>Register For This Challenge</strong>
+            </a>
+            <a ng-show="!CD.isDesign" ng-class="{disabled:CD.challenge.submissionDisabled || !CD.callComplete, disabledNOT:!CD.challenge.submissionDisabled}" class="btn btnAction" target="_blank"
+              ng-href="/challenge-details/{{CD.challenge.challengeId}}/submit/?type=develop">
+                <span>2</span><strong>Submit Your Entries</strong>
+            </a>
+            <a ng-show="CD.isDesign" ng-click="CD.registerToChallenge()" ng-class="{disabled:CD.challenge.registrationDisabled || !CD.callComplete, disabledNOT:!CD.challenge.registrationDisabled}" class="btn btnAction challengeRegisterBtn" href="javascript:;">
+                <span>1</span> <strong>Register For This Challenge</strong>
+            </a>
+            <a ng-show="CD.isDesign" ng-class="{disabled:CD.challenge.submissionDisabled || !CD.callComplete, disabledNOT:!CD.challenge.submissionDisabled}" class="btn btnAction" target="_blank"
+               ng-href="//studio.topcoder.com/?module=ViewRegistration&ct={{CD.challenge.challengeId}}">
+                <span>2</span> <strong>Submit Your Entries</strong>
+            </a>
+            <a ng-show="CD.isDesign" ng-class="{disabled:CD.challenge.submissionDisabled || !CD.callComplete, disabledNOT:!CD.challenge.submissionDisabled}" class="btn btnAction" target="_blank"
+               href="//studio.topcoder.com/?module=ViewSubmission&ct={{CD.challenge.challengeId}}">
+                <span>3</span> <strong>View Your Submission</strong>
+            </a>
+            <a ng-show="!CD.isDesign && CD.isPeerReviewed" ng-class="{disabled:CD.challenge.peerReviewDisabled || !CD.callComplete, disabledNOT:!CD.challenge.peerReviewDisabled}" class="btn btnAction" ng-href="/reviews/index.html#/challenge/{{CD.challenge.challengeId}}" target="_blank">
+                <span>3</span><strong>Review This Challenge</strong>
+            </a>
+          </div>
+
+          <div class="middleColumn member-program-path" ng-show="CD.isPeerReviewed && CD.phaseProgram">
+            <div ng-include src="getTemplateURL('ng-content-challenge-topsection.tpl.html')"></div>
+          </div>
+          <div class="middleColumn {{CD.isDesign ? 'studio' : ''}}" ng-show="!CD.isPeerReviewed">
+            <table class="prizeTable">
+              <tbody>
+
+                <tr>
+                  <td ng-if="!CD.isDesign && CD.challenge.challengeType != 'Code'" class="fifty">
+                    <h3>
+                      <small>$</small><span ng-bind="CD.challenge.prize ? (CD.challenge.prize[0] ? CD.challenge.prize[0] : '') : ''"></span>
+                    </h3>
+
+                    <h2>1st PLACE</h2>
+                  </td>
+                  <td ng-if="!CD.isDesign && CD.challenge.challengeType != 'Code'" class="fifty">
+                    <h3>
+                      <small>$</small><span ng-bind="CD.challenge.prize ? (CD.challenge.prize[1] ? CD.challenge.prize[1] : '0') : ''"></span>
+                    </h3>
+
+                    <h2>2nd PLACE</h2>
+                  </td>
+                  <td ng-if="(designOrCode = CD.isDesign || CD.challenge.challengeType == 'Code')" class="twenty {{!(CD.challenge.prize && CD.challenge.prize[0]) ? 'noPrize' : ''}}">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize && CD.challenge.prize[0]) || 0"></span>
+                    </h3>
+
+                    <h2>1st PLACE</h2>
+                  </td>
+                  <td ng-if="designOrCode" class="twenty {{!(CD.challenge.prize && CD.challenge.prize[1]) ? 'noPrize' : ''}}">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize && CD.challenge.prize[1]) || 0"></span>
+                    </h3>
+
+                    <h2>2nd PLACE</h2>
+                  </td>
+                  <td ng-if="designOrCode" class="twenty {{!(CD.challenge.prize && CD.challenge.prize[2]) ? 'noPrize' : ''}}">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize && CD.challenge.prize[2]) || 0"></span>
+                    </h3>
+
+                    <h2>3rd PLACE</h2>
+                  </td>
+                  <td ng-if="designOrCode" class="twenty {{!(CD.challenge.prize && CD.challenge.prize[3]) ? 'noPrize' : ''}}">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize && CD.challenge.prize[3]) || 0"></span>
+                    </h3>
+
+                    <h2>4th PLACE</h2>
+                  </td>
+                  <td ng-if="designOrCode" class="twenty {{!(CD.challenge.prize && CD.challenge.prize[4]) ? 'noPrize' : ''}}">
+                    <h3>
+                      <small>$</small><span ng-bind="(CD.challenge.prize && CD.challenge.prize[4]) || 0"></span>
+                    </h3>
+
+                    <h2>5th PLACE</h2>
+                  </td>
+                  <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize.length > 5)" class="morePayments active closed" rowspan="2">
+                  </td>
+                  <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize.length <= 5)" class="morePayments inactive" rowspan="2">
+                  </td>
+                </tr>
+                <tr ng-if="CD.challenge.prize  && CD.challenge.prize.length > 5 && (currentPlace = 6)" class="additionalPrizes hide" ng-repeat="i in range(0, (CD.challenge.prize.length - 5) / 5)">
+                  <td class="twenty" ng-if="CD.challenge.prize.length > 5 + i * 5" ng-repeat="j in range(i * 5, max((i + 1) * 5), CD.challenge.prize.length)">
+                    <h2 ng-bind-template="{{j + 1}}'th PLACE'"></h2>
+                    <h3><small>$</small><span ng-bind="CD.challenge.prize[j]"></span></h3>
+                  </td>
+                </tr>
+                <tr><!-- Bugfix: Added noPrize class when challenge has no reliability bonus -->
+                  <td ng-if="!CD.isDesign" colspan="5" class="{{ (!CD.challenge.reliabilityBonus || CD.challenge.challengeType === 'Bug Hunt') ? 'noPrize' : ''}}">
+                    <p class="realibilityPara">
+                      Reliability Bonus
+                      <span ng-if="CD.reliabilityBonus && CD.challenge.challengeType !== 'Bug Hunt'" ng-bind-template="${{CD.challenge.reliabilityBonus}}">
+                      </span>
+                      <span ng-if="!(CD.reliabilityBonus) || CD.challenge.challengeType === 'Bug Hunt'">
+                        N/A
+                      </span>
+                    </p>
+                  </td>
+                  </td>
+                  <td ng-if="CD.isDesign" colspan="5">
+                    <p class="scPoints" ng-if="CD.challenge.numberOfCheckpointsPrizes > 0"><span ng-bind="CD.challenge.numberOfCheckpointsPrizes"></span> CHECKPOINT AWARDS WORTH <span ng-bind-template="${{CD.challenge.topCheckPointPrize}}"></span>
+                      EACH</p>
+                    <p class="scPoints" ng-if="CD.challenge.numberOfCheckpointsPrizes == 0">NO CHECKPOINT AWARDS</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <!-- TODO: not sure why this code is repeated -- probably get rid of it (or make sure my fix of it is correct) -->
+          <div class="prizeSlider hide">
+            <ul>
+              <li class="slide">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td ng-if="!CD.isDesign && CD.challenge.challengeType != 'Code'" class="fifty">
+                        <h2>1st PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize ? (CD.challenge.prize[0] ? CD.challenge.prize[0] : '') : ''"></span>
+                        </h3>
+                      </td>
+                      <td ng-if="!CD.isDesign && CD.challenge.challengeType != 'Code'" class="fifty">
+                        <h2>2nd PLACE</h2>
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize ? (CD.challenge.prize[1] ? CD.challenge.prize[1] : '0') : ''"></span>
+                        </h3>
+                      </td>
+                      <td ng-if="(designOrCode = CD.isDesign || CD.challenge.challengeType == 'Code') && (CD.challenge.prize && CD.challenge.prize[0])" class="twenty">
+                        <h2>1st PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[0]"></span>
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && !(CD.challenge.prize && CD.challenge.prize[0])" class="twenty noPrize">
+                        <h2>1st PLACE</h2>
+
+                        <h3>
+                          <small>$</small>0
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize[1])" class="twenty">
+                        <h2>2nd PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[1]"></span>
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && !(CD.challenge.prize && CD.challenge.prize[1])" class="twenty noPrize">
+                        <h2>2nd PLACE</h2>
+
+                        <h3>
+                          <small>$</small>0
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize[2])" class="twenty">
+                        <h2>3rd PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[2]"></span>
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && !(CD.challenge.prize && CD.challenge.prize[2])" class="twenty noPrize">
+                        <h2>3rd PLACE</h2>
+
+                        <h3>
+                          <small>$</small>0
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize[3])" class="twenty">
+                        <h2>4th PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[3]"></span>
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && !(CD.challenge.prize && CD.challenge.prize[3])" class="twenty noPrize">
+                        <h2>4th PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[3]"></span>
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize[4])" class="twenty">
+                        <h2>5th PLACE</h2>
+
+                        <h3>
+                          <small>$</small><span ng-bind="CD.challenge.prize[4]"></span>
+                        </h3>
+                      </td>
+                      <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize[5])" class="twenty noPrize">
+                        <h2>5th PLACE</h2>
+
+                        <h3>
+                          <small>$</small>0
+                        </h3>
+                      </td>
+                      <!-- previously used rowspan logic might be needed: {{2 + ((CD.challenge.prize.length - 5) / 5)}} -->
+                      <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize.length > 5)" class="morePayments active closed" rowspan="2">
+                      </td>
+                      <td ng-if="designOrCode && (CD.challenge.prize && CD.challenge.prize.length <= 5)" class="morePayments inactive" rowspan="2">
+                      </td>
+                    </tr>
+                    <tr ng-if="CD.challenge.prize  && CD.challenge.prize.length > 5 && (currentPlace = 6)" class="additionalPrizes hide" ng-repeat="i in range(0, (CD.challenge.prize.length - 5) / 5)">
+                      <td class="twenty" ng-if="CD.challenge.prize.length > 5 + i * 5" ng-repeat="j in range(i * 5, max((i + 1) * 5), CD.challenge.prize.length)">
+                        <h2 ng-bind-template="{{j + 1}}'th PLACE'"></h2>
+                        <h3><small>$</small><span ng-bind="CD.challenge.prize[j]"></span></h3>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td ng-if="!CD.isDesign" colspan="5">
+                        <p class="realibilityPara">
+                          Reliability Bonus
+                          <span ng-if="CD.reliabilityBonus && CD.reliabilityBonus.length > 0">
+                            {{CD.challenge.reliabilityBonus}}
+                          </span>
+                          <span ng-if="!(CD.reliabilityBonus && CD.reliabilityBonus.length > 0)">
+                            N/A
+                          </span>
+                        </p>
+                      </td>
+                      </td>
+                      <td ng-if="CD.isDesign" colspan="5">
+                        <p class="scPoints"><span ng-bind="CD.challenge.numberOfCheckpointsPrizes"></span> CHECKPOINT AWARDS WORTH $<span ng-bind="CD.challenge.topCheckPointPrize"></span>
+                          EACH</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+        <div class="rightColumn">
+
+          <div class="nextBox" ng-init="toggleAllNext = true;">
+
+            <div class="nextBoxContent nextDeadlineNextBoxContent"  ng-show="toggleAllNext">
+              <div class="icoTime">
+                <span class="nextDTitle">Current Phase</span>
+                <!-- Bugfix I-106745: if current status of contest is not Active, output current contest status, else output current contest phase if active. -->
+                <span
+                  class="CEDate" ng-bind="CD.challenge.currentStatus.indexOf('Active') < 0 ? CD.challenge.currentStatus : CD.challenge.currentPhaseName"></span>
+              </div>
+              <!-- Bugfix I-106745: Added check for cancelled contest before display of current phase remaining time -->
+              <span ng-if="CD.challenge.currentStatus != 'Completed' && CD.challenge.currentStatus != 'Deleted' && CD.challenge.currentStatus.indexOf('Cancelled') < 0 && CD.challenge.currentPhaseRemainingTime > 0" class="timeLeft">
+                <span ng-bind="CD.challenge.currentPhaseRemainingTime | daysLeft"></span>
+                <small><ng-pluralize count="CD.challenge.currentPhaseRemainingTime | daysLeft" when="{'1': 'Day', 'other': 'Days'}"/></small>
+                <span ng-bind="CD.challenge.currentPhaseRemainingTime | hoursLeft"></span>
+                <small><ng-pluralize count="CD.challenge.currentPhaseRemainingTime | hoursLeft" when="{'1': 'Hour', 'other': 'Hours'}"/></small>
+                <span ng-bind="CD.challenge.currentPhaseRemainingTime | minsLeft"></span>
+                <small><ng-pluralize count="CD.challenge.currentPhaseRemainingTime | minsLeft" when="{'1': 'Min', 'other': 'Mins'}"/></small>
+              </span>
+            </div>
+            <!--End nextBoxContent-->
+            <div ng-if="!CD.isDesign" class="nextBoxContent allDeadlineNextBoxContent ng-hide" ng-show="!toggleAllNext">
+              <p><label>Start Date:</label>
+                <span>
+                 {{CD.challenge.postingDate | formatDate:2}}
+                </span>
+              </p>
+              <p><label>Register By:</label>
+               <span>
+                 {{CD.challenge.registrationEndDate | formatDate:2}}
+               </span>
+              </p>
+              <p class="{{CD.challenge.finalFixEndDate ? '' : 'last'"><label>Submit By:</label>
+                <span>
+                  {{CD.challenge.submissionEndDate | formatDate:2}}
+                </span>
+              </p>
+              <p ng-show="CD.inReview && CD.isPeerReviewed">
+                <label>Review By:</label>
+                <span>
+                  {{CD.challenge.currentPhaseEndDate | formatDate:2}}
+                </span>
+              </p>
+
+              <p ng-if="CD.challenge.finalFixEndDate" class="{{CD.challenge.finalFixEndDate ? 'last' : ''"><label>Final Submission:</label>
+                <span>
+                  {{CD.challenge.finalFixEndDate | formatDate:2}}
+                </span>
+              </p>
+
+            </div>
+            <!--End nextBoxContent-->
+            <div ng-if="CD.isDesign" class="nextBoxContent allDeadlineNextBoxContent studio ng-hide" ng-show="!toggleAllNext">
+              <p><label>Start Date:</label>
+                <span>
+                  {{CD.challenge.postingDate | formatDate:2}}
+                </span>
+              </p>
+              <p ng-if="CD.challenge.checkpointSubmissionEndDate != ''"><label>Checkpoint:</label>
+                <span>
+                  {{CD.challenge.checkpointSubmissionEndDate | formatDate:2}}
+                </span>
+              </p>
+
+              <p><label>End Date:</label>
+                <span>
+                  {{CD.challenge.submissionEndDate | formatDate:2}}
+                </span>
+              </p>
+
+              <p class="last"><label>Winners Announced:</label>
+                <span>
+                  {{CD.challenge.appealsEndDate  | formatDate:2}}
+                </span>
+              </p>
+            </div>
+            <!--End nextBoxContent-->
+          </div>
+
+          <!--End nextBox-->
+          <div class="deadlineBox">
+
+            <div class="deadlineBoxContent nextDeadlinedeadlineBoxContent" ng-show="toggleAllNext">
+              <a class="viewAllDeadLineBtn" ng-click="toggleAllNext = !toggleAllNext">View all deadlines +</a>
+            </div>
+            <!--End deadlineBoxContent-->
+            <div class="deadlineBoxContent allDeadlinedeadlineBoxContent ng-hide" ng-show="!toggleAllNext">
+              <a class="viewNextDeadLineBtn" ng-click="toggleAllNext = !toggleAllNext">View next deadline +</a>
+            </div>
+            <!--End deadlineBoxContent-->
+          </div>
+          <!--End deadlineBox-->
+        </div>
+        </div>
+      </div><!-- Step Box end -->
+      <div class="rightSplit  grid-3-3">
+        <div class="mainStream partialList">
+
+        <section class="tabsWrap">
+        <nav class="tabNav">
+          <div class="topRightTitle topRightTitleAlt" style="position: relative;">
+            <a ng-show="CD.isRegistered" ng-href="{{CD.challenge.forumLink}}" class="contestForumIcon" target="_blank">Challenge Discussion</a>
+          </div>
+          <ul>
+            <li><a href="#contest-overview" class="active link">Details</a></li>
+            <li ng-show="!CD.isDesign">
+              <a href="#viewRegistrant" class="link">Registrants ({{CD.numRegistrants}}) & Submissions ({{CD.numSubmissions}})</a>
+            </li>
+            <li ng-show="CD.isDesign">
+              <a href="#viewRegistrant" class="link">Registrants ({{CD.numRegistrants}})</a>
+            </li>
+            <li ng-show="(CD.challenge.checkpoints && CD.challenge.checkpoints.length > 0) || CD.checkpointData"><a href="#checkpoints" class="link">Checkpoints ({{CD.numCheckpointSubmissions}})</a></li>
+            <li ng-show="!CD.isDesign"><a href="#winner" class="link">Results</a></li>
+            <li ng-show="CD.isDesign && !CD.inSubmission"><a href="#submissions" class="link">Submissions ({{CD.numSubmissions}})</a></li>
+            <li ng-show="CD.isDesign && (CD.inSubmission || CD.inScreening || CD.inReview)"><span class="inactive">Results</span></li>
+            <li ng-show="CD.isDesign && !(CD.inSubmission || CD.inScreening || CD.inReview)"><a href="#winner" class="link">Results</a></li>
+          </ul>
+        </nav>
+        <nav class="tabNav firstTabNav designFirstTabNav mobile hide">
+          <ul>
+            <li><a href="#contest-overview" class="active link">Details</a></li>
+            <li>
+              <a href="#viewRegistrant" class="link">Registrants ({{CD.numRegistrants}})</a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="tabNav firstTabNav designSecondTabNav mobile hide">
+          <ul>
+            <li ng-if="CD.inSubmission"><span class="inactive">Checkpoints ({{CD.numCheckpointSubmissions}})</span></li>
+            <li ng-show="CD.inSubmission"><span class="inactive">Submissions</span></li>
+            <li ng-show="!CD.inSubmission"><a href="#submissions" class="link">Submissions ({{CD.numSubmissions}})</a></li>
+            <li>
+              <li ng-show="CD.inSubmission || CD.inScreening || CD.inReview"><span class="inactive">Results</span></li>
+              <li ng-show="!(CD.inSubmission || CD.inScreening || CD.inReview)"><a href="#winner" class="link">Results</a></li>
+            </li>
+          </ul>
+        </nav>
+
+        <div ng-if="!CD.isDesign" id="contest-overview" class="tableWrap {{CD.activeTab != 'details' ? 'hide' : ''}} tab">
+          <article ng-if="!CD.isDesign" id="contestOverview">
+            <h2>Challenge Overview</h2>
+
+            <p ng-bind-html="CD.challenge.detailedRequirements | trust"></p>
+
+            <article id="platforms">
+              <h2>Platforms</h2>
+              <ul>
+                <li ng-if="(hasPlatforms = CD.challenge.platforms && CD.challenge.platforms.length > 0)" ng-repeat="platform in CD.challenge.platforms" >
+                  <strong ng-bind="platform"></strong>
+                </li>
+                <li ng-if="!(hasPlatforms = CD.challenge.platforms && CD.challenge.platforms.length > 0)">
+                  <strong>Not Specified</strong>
+                </li>
+              </ul>
+            </article>
+
+            <article id="technologies">
+              <h2>Technologies</h2>
+              <div class="technologyTags">
+                <ul>
+                  <li ng-if="CD.challenge.technology && CD.challenge.technology.length > 0" ng-repeat="tech in CD.challenge.technology">
+                    <span>{{tech}}</span>
+                  </li>
+                  <li ng-if="!(CD.challenge.technology && CD.challenge.technology.length > 0)">
+                    <strong>Not Specified</strong>
+                  </li>
+
+                </ul>
+              <div class="clear"></div>
+              </div>
+            </article>
+
+            <h3>Final Submission Guidelines</h3>
+            <div ng-bind-html="CD.challenge.finalSubmissionGuidelines | trust"></div>
+
+            <article id="payments">
+              <h2>Payments</h2>
+
+              <p>Topcoder will compensate members in accordance with the payment structure of this challenge.
+                Initial payment for the winning member will be distributed in two installments. The first payment
+                will be made at the closure of the approval phase. The second payment will be made at the
+                completion of the support period.</p>
+
+              <h2>Reliability Rating and Bonus</h2>
+
+              <p>For challenges that have a reliability bonus, the bonus depends on the reliability rating at
+                the moment of registration for that project. A participant with no previous projects is
+                considered to have no reliability rating, and therefore gets no bonus.
+                Reliability bonus does not apply to Digital Run winnings. Since reliability rating is
+                based on the past 15 projects, it can only have 15 discrete values.<br>
+                <a href="http://help.topcoder.com/development/understanding-reliability-and-ratings/">Read more.</a></p>
+            </article>
+
+          </article>
+
+        </div>
+        <div ng-if="CD.isDesign" id="contest-overview" class="tableWrap {{CD.activeTab != 'details' ? 'hide' : ''}} tab">
+          <article ng-if="CD.isDesign" id="contestOverview">
+
+            <article id="contestSummary">
+              <h2>CHALLENGE SUMMARY</h2>
+
+              <p class="paragraph" ng-bind-html="CD.challenge.introduction | trust"></p>
+
+              <p></p>
+
+              <p class="note"><em>Please read the challenge specification carefully and watch the forums for any
+                  questions or feedback concerning this challenge. It is important that you monitor any updates
+                  provided by the client or Studio Admins in the forums. Please post any questions you might have for
+                  the client in the forums.</em>
+              </p>
+            </article>
+
+            <article id="studioTournamentFormat" ng-if="CD.challenge.numberOfCheckpointsPrizes > 0">
+              <h2>CHALLENGE FORMAT</h2>
+              <p class="paragraph">This competition will be run as a two-round challenge.</p>
+              <div>
+                <span class="subTitle">Round One (1)</span>
+
+                <p class="paragraph"></p>
+
+                <p style="margin: 0px 0px 0px 15px; padding: 0px; color: rgb(64, 64, 64);"><span
+                    style="line-height: 1.6em;" ng-bind-html="CD.challenge.round1Introduction | trust"></span></p>
+
+                <span class="subTitle">Round Two (2)</span>
+
+                <p class="paragraph"></p>
+
+                <p><span style="color: rgb(64, 64, 64); font-size: 13px;" ng-bind-html="CD.challenge.round2Introduction | trust"></span></p>
+
+                <p></p>
+
+
+                <h6 class="smallTitle red">Regarding the Rounds:</h6>
+
+                <p></p>
+
+                <ul class="red">
+                  <li>To be eligible for Round 1 prizes and design feedback, you must submit before the Checkpoint
+                    deadline.
+                  </li>
+                  <li>A day or two after the Checkpoint deadline, the challenge holder will announce Round 1 winners and
+                    provide design feedback to those winners in the "Checkpoints" tab above.
+                  </li>
+                  <li>You must submit to Round 1 to be eligible to compete in Round 2. If your submission fails
+                    screening for a small mistake in Round 1, you may still be eligible to submit to Round 2.
+                  </li>
+                  <li>Every competitor with a passing Round 1 submission can submit to Round 2, even if they didn't
+                    win a Checkpoint prize.
+                  </li>
+                  <li><a
+                      href="http://help.topcoder.com/design/submitting-to-a-design-challenge/multi-round-checkpoint-design-challenges/">Learn
+                      more here</a>.
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article id="fullDescription">
+              <h2>FULL DESCRIPTION &amp; PROJECT GUIDE</h2>
+
+              <p ng-bind-html="CD.challenge.detailedRequirements | trust"></p>
+            </article>
+
+            <article id="stockPhotography">
+              <h2>STOCK PHOTOGRAPHY</h2>
+
+              <p ng-if="CD.challenge.allowStockArt"> Stock photography is allowed in this challenge.<br>
+                <a href="http://help.topcoder.com/design/design-copyright-and-font-policies/policy-for-stock-photos-in-design-submissions/">See this page for more details.</a></p>
+
+              <p ng-if="!CD.challenge.allowStockArt">Stock photography is not allowed in this challenge. All submitted elements must be designed solely by you.<br>
+                <a href="http://help.topcoder.com/design/design-copyright-and-font-policies/policy-for-stock-photos-in-design-submissions/">See
+                   this page for more details.</a></p>
+
+            </article>
+
+            <article id="howtosubmit">
+              <h2>HOW TO SUBMIT</h2>
+
+              <p>
+              <ul class="howToSubmit">
+                <li>New to Studio? <a
+                    href="http://help.topcoder.com/design/submitting-to-a-design-challenge/getting-started-in-design-challenges/"
+                    target="_blank">Learn how to compete
+                    here</a>.
+                </li>
+                <li>Upload your submission in three parts (<a
+                    href="http://help.topcoder.com/design/submitting-to-a-design-challenge/formatting-your-submission-for-design-challenges/"
+                    target="_blank">Learn more here</a>). Your design should be finalized and should contain only a single design
+                  concept (do not include multiple designs in a single submission).
+                </li>
+                <li>If your submission wins, your source files must be correct and
+                  "<a href="http://help.topcoder.com/design/submitting-to-a-design-challenge/design-final-fixes-policies/"
+                      target="_blank">Final Fixes</a>" (if
+                  applicable) must be completed before payment can be released.
+                </li>
+                <li>You may submit as many times as you'd like during the submission phase, but only the number of files
+                  listed above in the Submission Limit that you rank the highest will be considered. You can change
+                  the order of your submissions at any time during the submission phase. If you make revisions to your
+                  design, please delete submissions you are replacing.
+                </li>
+              </ul>
+              </p>
+            </article>
+
+            <article id="winnerselection">
+              <h2>WINNER SELECTION</h2>
+
+              <p>
+                Submissions are viewable to the client as they are entered into the challenge. Winners are selected by the
+                client and are chosen solely at the Client's discretion.
+              </p>
+            </article>
+
+            <article id="payments">
+              <h2>PAYMENTS</h2>
+
+              <p>Topcoder will compensate members in accordance with the payment structure of this challenge.
+                Initial payment for the winning member will be distributed in two installments. The first payment
+                will be made at the closure of the approval phase. The second payment will be made at the
+                completion of the support period.</p>
+
+              <h2>Reliability Rating and Bonus</h2>
+
+              <p>For challenges that have a reliability bonus, the bonus depends on the reliability rating at
+                the moment of registration for that project. A participant with no previous projects is
+                considered to have no reliability rating, and therefore gets no bonus.
+                Reliability bonus does not apply to Digital Run winnings. Since reliability rating is
+                based on the past 15 projects, it can only have 15 discrete values.<br>
+                <a href="http://help.topcoder.com/development/understanding-reliability-and-ratings/">Read more.</a></p>
+            </article>
+
+
+          </article>
+        </div>
+
+        <div id="viewRegistrant" class="tableWrap {{CD.activeTab != 'registrants' ? 'hide' : ''}} tab" style="">
+
+
+          <article>
+            <table class="registrantsTable">
+              <thead>
+                <tr>
+                  <th class="handleColumn">
+                    <div>Username</div>
+                  </th>
+                  <th ng-if="!CD.isDesign" class="ratingColumn">
+                    <div>Rating</div>
+                  </th>
+                  <th ng-if="!CD.isDesign" class="reliabilityColumn">
+                    <div>Reliability</div>
+                  </th>
+                  <th class="regDateColumn">
+                    <div>Registration Date</div>
+                  </th>
+                  <th class="subDateColumn">
+                    <div>Submission Date</div>
+                  </th>
+                  <th class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <div>Result</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="registrant in CD.challenge.registrants | orderBy:'registrationDate'">
+                  <td ng-class="CD.challengeType == 'design' ? 'handleColumnDesign' : 'handleColumn'">
+                    <span>
+                        <a ng-href="{{CD.siteURL + '/member-profile/' + registrant.handle}}" ng-bind="registrant.handle"></a>
+                    </span>
+                  </td>
+                  <td ng-if="!CD.isDesign" class="ratingColumn">
+                    <span style="{{registrant.colorStyle}}" ng-bind="registrant.rating || 0" ng-bind="registrant.rating || 0"></span>
+                  </td>
+                  <td ng-if="!CD.isDesign" class="reliabilityColumn">
+                    <span ng-bind="registrant.reliability"></span>
+                  </td>
+                  <td ng-class="CD.challengeType == 'design' ? 'regDateColumnDesign' : 'regDateColumn'" ng-bind="registrant.registrationDate | formatDate:2"></td>
+                  <td ng-class="CD.challengeType == 'design' ? 'subDateColumnDesign' : 'subDateColumn'" ng-bind="registrant.submissionDate | formatDate:2"></td>
+                  <!--bugfix refactored-challenge-details-68: added missing icons -->
+                  <td class="successIconColumn" ng-show="!CD.isPeerReviewed">
+                    <i class="{{registrant.winner ? 'successIcon' : registrant.submissionStatus.match('Failed') ? 'failureIcon' : ''}}"
+                       title="{{registrant.winner ? 'Pass' : registrant.submissionStatus.match('Failed') ? 'Fail' : ''}}"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+          </article>
+
+
+        </div>
+        <div id="winner" class="tableWrap {{CD.activeTab != 'results' ? 'hide' : ''}} tab">
+          <div ng-include src="getTemplateURL('ng-page-challenge-result.tpl.html')"></div>
+        </div>
+        <div id="checkpoints" class="tableWrap {{CD.activeTab == 'checkpoints' ? '' : 'hide'}} tab">
+
+
+          <article>
+            <div ng-include src="getTemplateURL('ng-content-checkpoint.tpl.html')"></div>
+          </article>
+
+        </div>
+        <div id="submissions" class="tableWrap {{activeTab != 'submissions' ? 'hide' : ''}} tab">
+
+
+          <article>
+            <div ng-include src="getTemplateURL('ng-content-submission.tpl.html')"></div>
+          </article>
+
+        </div>
+        </section>
+        </div>
+        <!-- /.mainStream -->
+
+        </div>
+        <!-- /.rightSplit -->
+      <aside class="sideStream grid-1-3" style="float: left;">
+
+      <div class="topRightTitle">
+          <a ng-show="CD.isRegistered" ng-href="{{CD.challenge.forumLink}}" class="contestForumIcon" target="_blank">Challenge Discussion</a>
+      </div>
+
+      <div class="columnSideBar">
+
+        <div class="slider">
+          <ul>
+            <div ng-hide="CD.isDesign" class="slideBox">
+              <div ng-include src="getTemplateURL('ng-content-challenge-downloads.tpl.html')"></div>
+            </div>
+            <li ng-show="CD.challenge.event" class="slide">
+                <div class="contestLinks slideBox">
+                <h3>Eligible Events:</h3>
+
+                <div class="inner">
+                  <p><a ng-href="{{CD.challenge.event.url}}" target='_blank'>{{CD.challenge.event.description}}</a></p>
+                </div>
+              </div>
+            </li>
+            <li ng-hide="CD.isDesign" class="slide">
+
+              <div class="reviewStyle slideBox">
+                <h3>Review Style:</h3>
+
+                <div class="inner">
+                  <p><strong>Final Review: </strong><span>{{CD.reviewStyle}}</span>
+                    <a onmouseout="hideTooltip('FinalReview');" onmouseover="showTooltip(this, 'FinalReview');" class="tooltip"
+                       href="javascript:;"> </a></p>
+
+                  <p><strong>Approval: </strong><span>User Sign-Off</span>
+                    <a onmouseout="hideTooltip('Approval');" onmouseover="showTooltip(this, 'Approval');" class="tooltip"
+                       href="javascript:;"> </a>
+                  </p>
+                </div>
+
+              </div>
+              <!-- End review style section -->
+
+            </li>
+            <li ng-show="CD.challenge.screeningScorecardId || (!CD.isDesign && CD.challenge.reviewScorecardId)" class="slide">
+
+              <div class="contestLinks slideBox">
+                <h3>Challenge Links:</h3>
+
+                <div class="inner">
+                  <p ng-show="CD.challenge.screeningScorecardId"><a
+                      href="https://software.topcoder.com/review/actions/ViewScorecard.do?method=viewScorecard&scid={{CD.challenge.screeningScorecardId}}">Screening
+                      Scorecard</a></p>
+
+                  <p ng-show="!CD.isDesign && CD.challenge.reviewScorecardId"><a
+                      href="{{CD.reviewScorecardLink}}" target="_blank">Review
+                      Scorecard</a></p>
+                </div>
+
+              </div>
+
+            </li>
+            <li ng-hide="CD.isDesign || CD.isPeerReviewed" class="slide">
+
+              <div class="umltoolLinks slideBox">
+                <h3>Get the UML Tool:</h3>
+
+                <div class="inner">
+                  <p><a href="https://github.com/topcoderinc/topcoder-UML-Tool">Github source code repository</a></p>
+                  <p><a href="https://github.com/topcoderinc/topcoder-UML-Tool/blob/master/build/dist/TopCoder%20UML%20Tool%20OS%20X%201.2.7.zip?raw=true">Mac disk image </a></p>
+                  <p><a href="https://github.com/topcoderinc/topcoder-UML-Tool/blob/master/build/dist/TopCoder_UML_Tool_Installer-1.2.7.jar?raw=true">Java installer</a></p>
+                </div>
+
+              </div>
+              <!-- End review style section -->
+
+            </li>
+
+            <li ng-if="CD.isDesign" class="slide">
+              <div class="forumFeed slideBox">&nbsp;<br/>
+              </div>
+            </li>
+            <li ng-if="CD.isDesign" class="slide">
+              <div ng-include src="getTemplateURL('ng-content-challenge-downloads.tpl.html')"></div>
+            </li>
+            <li ng-if="CD.isDesign" class="slide">
+              <div class="slideBox">
+                <h3>How to Format Your Submission:</h3>
+
+                <div class="inner">
+                  <ul>
+                    <b>Your Design Files:</b><br>
+                    <li>1. Look for instructions in this challenge regarding what files to provide.
+                    </li>
+                    <li>2. Place your submission files into a "Submission.zip" file.</li>
+                    <li>3. Place all of your source files into a "Source.zip" file.</li>
+                    <li>4. Create a JPG preview file.</li>
+                  </ul>
+
+                  <p>Trouble formatting your submission or want to learn more?
+                    <a href="/home/studio/the-process/how-to-submit-to-a-contest/">Read this FAQs</a>.</p>
+
+                  <!-- Bugfix I-111397: removed empty link tags surrounding text -->
+                  <p><strong>Fonts:</strong> All fonts within your design must be declared when you submit. DO NOT include any font files in your submission or source files.
+                  <a href="/home/studio/the-process/font-policy/" style="white-space:nowrap;">Read about the font policy here</a>.
+                  </p>
+
+                  <p><strong>Screening:</strong> All submissions are screened for eligibility before the challenge holder picks
+                    winners. Don't let your hard work go to waste.<br> <a
+                      href="@@community/studio/the-process/screening/">Learn more about how to pass screening
+                      here</a>.
+                  </p>
+
+                  <p>Questions? <a href="//studio.topcoder.com/forums?module=ThreadList&amp;forumID=6">Ask in the Challenge Discussion Forums</a>.
+                  </p>
+
+                </div>
+              </div>
+            </li>
+            <li ng-if="CD.isDesign" class="slide">
+              <div class="slideBox">
+                <h3>Source Files:</h3>
+
+                <div class="inner">
+                  <ul>
+                    <li ng-if="!hasFiletypes"><strong>Text or Word Document containing all of your ideas and supporting information.</strong></li>
+                    <li ng-if="hasFiletypes" ng-repeat="filetype in CD.challenge.filetypes">
+                      <strong ng-bind="filetype"></strong>
+                    </li>
+                  </ul>
+
+                  <p>You must include all source files with your submission. </p>
+                </div>
+              </div>
+            </li>
+            <li ng-if="CD.isDesign" class="slide">
+              <div class="slideBox">
+                <h3>Submission Limit:</h3>
+
+                <div class="inner">
+                  <!-- Bugfix I-107615: Added check if SubmissionLimit is empty, if so, display "Unlimited" instead of empty value -->
+                  <p><strong ng-bind="CD.challenge.submissionLimit.length > 0 ? CD.challenge.submissionLimit : 'Unlimited'"></strong></p>
+                </div>
+              </div>
+            </li>
+            <li class="slide">
+              <div class="slideBox">
+                <h3>Share:</h3>
+
+                <div class="inner">
+                  <!-- AddThis Button BEGIN -->
+                  <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                    <a class="addthis_button_preferred_1"></a>
+                    <a class="addthis_button_preferred_2"></a>
+                    <a class="addthis_button_preferred_3"></a>
+                    <a class="addthis_button_preferred_4"></a>
+                    <a class="addthis_button_compact"></a>
+                    <a class="addthis_counter addthis_bubble_style"></a>
+                  </div>
+                  <script type="text/javascript">var addthis_config = {"data_track_addressbar": false};
+                    var addthis_share = { url: location.href, title: 'Topcoder Challenge' }</script>
+                  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52f22306211cecfc"></script>
+                  <!-- AddThis Button END -->
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      </aside>
+      <!-- /.sideStream -->
+      <div class="clear"></div>
+    </div>
+    <!-- /.container -->
+  </article>
+  <!-- /#mainContent -->
+
+
+  <div onmouseout="hideTooltip('FinalReview')" onmouseover="enterTooltip('FinalReview')"
+       class="tip reviewStyleTip tipFinalReview" style="display: none;">
+    <div class="inner">
+      <div class="tipHeader">
+        <h2>Final Review</h2>
+      </div>
+      <div class="tipBody">
+      <!--Bugfix refactored-challenge-details-117: Removed unused hyperlink-->
+      {{CD.reviewStyleTooltip}}
+      </div>
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+
+  <div onmouseout="hideTooltip('Approval')" onmouseover="enterTooltip('Approval')" class="tip reviewStyleTip tipApproval"
+       style="display: none;">
+    <div class="inner">
+      <div class="tipHeader">
+        <h2>Approval</h2>
+      </div>
+      <div class="tipBody">
+        Customer has final opportunity to sign-off on the delivered assets.
+      </div>
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+</div>
+
+
+<footer class="bottom-footer">
+  <!-- Footer links -->
+  <nav class="menu-item">
+    <div class="menu-item-header show-small">OTHERS</div>
+    <ul class="submenu">
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="/sitemap" class="menu-link">SITEMAP</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="/about" class="menu-link">ABOUT US</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="/contact-us" class="menu-link">CONTACT US</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://help.topcoder.com" target="_blank" class="menu-link">HELP CENTER</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://topcoder.com/community/how-it-works/privacy-policy/" class="menu-link">PRIVACY POLICY</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://topcoder.com/community/how-it-works/terms/" class="menu-link">TERMS</a></li>
+    </ul>
+    <!-- Social links -->
+  </nav>
+  <div class="social-links">
+    <p>Topcoder is also on</p><a href="https://www.facebook.com/topcoder" target="fbwindow" class="fb-link"></a><a href="http://www.twitter.com/topcoder" target="twwindow" class="twitter-link"></a><a href="https://www.linkedin.com/company/topcoder" target="liwindow" class="linkedin-link"></a><a href="https://plus.google.com/u/0/b/104268008777050019973/104268008777050019973/posts" target="gpwindow" class="google-link"></a>
+  </div>
+  <p class="copyright-notice">© 2015 Topcoder. All Rights Reserved</p>
+</footer>
+
+
+
+
+</div>
+<!-- /.content -->
+</div>
+<!-- /#wrapper -->
+
+
+<div id="bgModal"></div><!-- background modal -->
+<div id="bgOverlapModal"></div><!-- background modal -->
+<div id="bgLoadingModal"><span></span></div><!-- background loading -->
+<div id="thanks" class="modal">
+  <a href="javascript:;" class="closeBtn closeModal"></a>
+
+  <div class="content">
+    <h2>Thanks for joining!</h2>
+
+    <p>We have sent you an email with activation instructions.<br/>If you do not receive that email within 1 hour,
+      please email <a href="mailto:support@topcoder.com">support@topcoder.com</a>.</p>
+
+    <div>
+      <a href="javascript:;" class="btn closeModal redirectOnConfirm">Close</a>
+    </div>
+  </div>
+</div><!-- END #thanks -->
+<div id="registerSuccess" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Registered!</h2>
+    <p class="success">Thank you for registering. You may now download the challenge files and participate in the challenge forums.</p>
+    <p class="submitBtn">
+      <a class="btn closeModalReg" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #registerSuccess -->
+<div id="registerFailed" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Info</h2>
+    <p class="failedMessage"></p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #registerFailed -->
+
+<div id="showSubmission" class="modal">
+    <a href="javascript:;" class="btnClose closePopupModal"></a>
+    <div class="content">
+       <img alt="" style="width:910px; height:850px">
+    </div>
+</div><!-- END #show submission -->
+
+<div id="filterSavedSuccess" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Success</h2>
+    <p class="success">Your filters have been saved and stored in the "My Filters" dropdown list.</p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #filterSavedSuccess -->
+
+<div id="filterSavedFailed" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Info</h2>
+    <p class="failedMessage"></p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #filterSavedFailed -->
+
+<div id="designSubmissionCommentExample" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Comment Examples</h2>
+
+    <strong>Example 1:</strong><br>
+    The logo represents movement and "taking action" rather than being stagnant.
+    The colors I chose signify power and give the brand a strong feel.<br><br>
+
+    <strong>Example 2:</strong><br>
+    This is a revised version of my previous submission. Changes include a new
+    header graphic, new font choices for the pop-up box and new icons for the
+    widget on the fourth page.<br><br>
+
+    <strong>Example 3:</strong><br>
+    This is my Round 2 submission. I have implemented all of the feedback you
+    gave me after Round 1 and I hope you like the changes.<br><br>
+  </div>
+</div><!-- END #show submission -->
+
+<div id="typeTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <p class="contestTy"></p>
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div><!-- /.tooltip -->
+<div id="winnerTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <div class="winnerInfo"></div>
+    </div>
+    <div class="arrow alt"></div>
+  </div>
+</div><!-- /.tooltip -->
+<div id="badgeTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <p class="earnedOn"></p>
+    </div>
+    <div class="data">
+      <p class="currentlyEarned"><span></span></p>
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div><!-- /.tooltip -->
+
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-animate.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-route.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/restangular/1.4.0/restangular.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.10/ng-grid.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.10/ng-grid-flexible-height.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-cookies.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
+<script type='text/javascript' src='/wp-content/plugins/TcApi-hookup/includes/js/Selectyze.jquery.js'></script>
+<script type='text/javascript' src='/wp-content/plugins/TcApi-hookup/includes/js/tcapi.js'></script>
+<script type='text/javascript' src='//cdn.auth0.com/w2/auth0-1.6.4.js'></script>
+<script type='text/javascript' src='/mf/js/ng-details.min.js?ver=aad7422'></script>
+<!-- START Marketo Code -->
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>Munchkin.init('921-UOU-112', {"wsInfo":"jFRS"});</script>
+<!-- END Marketo Code -->
+
+<!-- START KISSmetrics -->
+<script type="text/javascript">var _kmq = _kmq || [];
+var _kmk = _kmk || 'aa23cd43c455ef33b6a0df3de81a79af9ea30f75';
+function _kms(u){
+  setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0],
+    s = d.createElement('script');
+    s.type = 'text/javascript'; s.async = true; s.src = u;
+    f.parentNode.insertBefore(s, f);
+  }, 1);
+}
+_kms('//i.kissmetrics.com/i.js');
+_kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+</script>
+<!-- END KISSmetrics -->
+
+<!-- START Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+  __gaTracker('create', 'UA-6340959-1', 'auto');
+  __gaTracker('set', 'forceSSL', true);
+  __gaTracker('require', 'displayfeatures');
+  __gaTracker('send','pageview');
+</script>
+<!-- END Google Analytics -->
+
+<script>
+(function() {
+  var headerApp = angular.module('tc.header', [])
+  headerApp.directive('ngHeaderBootstrap', function(){
+    return {
+      restrict: 'C',
+      templateUrl: tcconfig.mainURL + '/mf/js/app/header/partials/header-nav.html',
+      controller: function($scope, $timeout){
+        $scope.vm = vm = {};
+        $scope.main = {};
+        $scope.main.menuVisible = false;
+        vm.isAuth = false;
+
+        if (app.isLoggedIn()) {
+          vm.isAuth = true;
+          app.getHandle(function(handle) {
+            $.get(tcconfig.apiURL + '/users/' + handle, function(data) {
+              var photoLink = data['photoLink'];
+              if (photoLink) {
+                if (photoLink.indexOf('//') == -1) {
+                  photoLink = tcconfig.communityURL + data['photoLink']
+                }
+              } else {
+                photoLink = tcconfig.communityURL + '/i/m/nophoto_login.gif';
+              }
+              
+              var color = '';
+              var ratings = data['ratingSummary'];
+              if (ratings) {
+                var maxRating = 0;
+                for (var i = 0; i < ratings.length; i++) {
+                  if (maxRating < ratings[i]['rating']) {
+                    maxRating = ratings[i]['rating'];
+                    color = ratings[i]['colorStyle'].split(": ")[1];
+                  }
+                }
+              } else if (data['isPM'] == true) {
+                color = '#FF9900';
+              }
+              
+              $timeout(function() {
+                vm.handleStyle = { color: color };
+                vm.photoURL = photoLink;
+              });
+            });
+
+            $timeout(function() {
+              vm.userHandle = handle;
+              vm.userMenu = [
+                { 'href': '/my-dashboard', 'text': 'DASHBOARD', 'icon': '/mf/i/nav/dashboard.svg' },
+                { 'href': '/members/' + handle, 'text': 'MY PROFILE', 'icon': '/mf/i/nav/profile.svg' },
+                { 'href': 'https:' + tcconfig.communityURL + '/PactsMemberServlet?module=PaymentHistory&full_list=false', 'text': 'PAYMENTS', 'icon': '/mf/i/nav/wallet.svg' },
+                { 'href': '/settings/profile', 'text': 'SETTINGS', 'icon': '/mf/i/nav/settings.svg' },
+              ];
+            });
+          });
+        }
+
+        vm.menuHeaders = [ 'compete', 'learn', 'community' ];
+        vm.menuLinks =
+        {
+          'compete': [
+              { 'href':  "/challenges/design/active/?pageIndex=1", 'text': 'DESIGN CHALLENGES', 'icon': '/mf/i/nav/track-design.svg' },
+              { 'href':  "/challenges/develop/active/?pageIndex=1", 'text': 'DEVELOPMENT CHALLENGES', 'icon': '/mf/i/nav/track-develop.svg' },
+              { 'href':  "/challenges/data/active/?pageIndex=1", 'text': 'DATA SCIENCE CHALLENGES', 'icon': '/mf/i/nav/track-data.svg' },
+              { 'href':  'https:' + tcconfig.arenaURL, 'text': 'COMPETITIVE PROGRAMMING', 'icon': '/mf/i/nav/track-cp.svg', 'target': '_blank' },
+          ],
+          'learn': [
+              { 'href': '/getting-started/', 'text': 'GETTING STARTED', 'icon': '/mf/i/nav/rocket.svg' },
+              { 'href': '/community/design/', 'text': 'DESIGN', 'icon': '/mf/i/nav/book-design.svg' },
+              { 'href': '/community/development/', 'text': 'DEVELOPMENT', 'icon': '/mf/i/nav/book-develop.svg' },
+              { 'href': '/community/data-science/', 'text': 'DATA SCIENCE', 'icon': '/mf/i/nav/book-data.svg' },
+              { 'href': '/community/competitive%20programming/', 'text': 'COMPETITIVE PROGRAMMING', 'icon': '/mf/i/nav/book-cp.svg' },
+          ],
+          'community': [
+              { 'href': '/community/members/', 'text': 'OVERVIEW', 'icon': '/mf/i/nav/members.svg' },
+              { 'href': '/community/member-programs/', 'text': 'PROGRAMS', 'icon': '/mf/i/nav/programs.svg' },
+              { 'href': 'https://' + tcconfig.forumsAppURL, 'text': 'FORUMS', 'icon': '/mf/i/nav/forums.svg' },
+              { 'href': '/community/statistics/', 'text': 'STATISTICS', 'icon': '/mf/i/nav/statistics.svg' },
+              { 'href': '/community/events/', 'text': 'EVENTS', 'icon': '/mf/i/nav/events.svg' },
+              { 'href': '/blog/', 'text': 'BLOG', 'icon': '/mf/i/nav/blog.svg' }
+          ]
+        };
+
+        vm.checkSubmit = function(ev) {
+          if (ev.keyCode === 13)
+            window.location.replace(tcconfig.mainURL + '/search?s=' + vm.searchTerm + '&scope=member');
+        }
+
+        vm.isActive = function(href) {
+          if (window.location.pathname == href)
+            return true;
+          return false;
+        }
+
+        vm.login = function() {
+          window.location.href = "/login?next=" + encodeURIComponent(window.location.href);
+        }
+
+        vm.logout = function() {
+          document.cookie = 'tcsso=; path=/; domain=.' + tcconfig.domain + '; expires=' + new Date(0).toUTCString();
+          document.cookie = 'tcjwt=; path=/; domain=.' + tcconfig.domain + '; expires=' + new Date(0).toUTCString();
+          main.menuVisible = vm.isAuth = false;
+          window.location.href = '/logout';
+        }
+      }
+    };
+  });
+
+  angular.bootstrap($('.ng-header-bootstrap'), ['tc.header']);
+})();
+</script>
+
+</div>
+
+</body>
+
+</html>
+

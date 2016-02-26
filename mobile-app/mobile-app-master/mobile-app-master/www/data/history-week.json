@@ -1,0 +1,92 @@
+[
+  {
+    "name":"Annie Doe1",
+    "code":"AD",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Consumer",
+    "distance":"0.6 miles"
+  },
+  {
+    "name":"Company Name",
+    "code":"C",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Commercial",
+    "distance":"0.6 miles"
+  },
+  {
+    "name":"Sarah Doe",
+    "code":"SD",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Consumer",
+    "distance":"0.6 miles"
+  },
+  {
+    "name":"Annie Doe",
+    "code":"AD",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Consumer",
+    "distance":"0.6 miles"
+  },
+  {
+    "name":"Company Name",
+    "code":"C",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Commercial",
+    "distance":"0.6 miles"
+  },
+  {
+    "name":"Sarah Doe",
+    "code":"SD",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Consumer",
+    "distance":"0.6 miles"
+  },
+  {
+    "name":"Annie Doe",
+    "code":"AD",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Consumer",
+    "distance":"0.6 miles"
+  },
+  {
+    "name":"Company Name",
+    "code":"C",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Commercial",
+    "distance":"0.6 miles"
+  },
+  {
+    "name":"Sarah Doe",
+    "code":"SD",
+    "address1":"2310 Broadway",
+    "address2":"New York, NY 10010",
+    "phone":"12345 67890",
+    "email":"username@gmail.com",
+    "include":"Consumer",
+    "distance":"0.6 miles"
+  }
+]

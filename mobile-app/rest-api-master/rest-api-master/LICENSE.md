@@ -1,0 +1,1 @@
+Copyright &copy; 2015, Topcoder Inc. All rights reserved.

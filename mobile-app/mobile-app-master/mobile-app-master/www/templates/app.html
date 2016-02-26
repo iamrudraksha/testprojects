@@ -1,0 +1,63 @@
+<ion-side-menus>
+
+    <ion-side-menu-content drag-content="false">
+        <ion-nav-bar class="bar bar-header bar-calm" align-title="center">
+            <ion-nav-buttons side="right">
+                <!-- Toggle right side menu -->
+                <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+
+        <ion-nav-view name="appContent" class="app-content"></ion-nav-view>
+    </ion-side-menu-content>
+    <!-- End side menu content-->
+
+    <!-- Right menu -->
+    <ion-side-menu side="right" width="297" enable-menu-with-back-views="true">
+        <ion-content>
+            <a menu-close href="javascript:" class="menu-close"></a>
+
+            <div class="user">
+                <div class="thumb">
+                    {{leftMenu[0].thumb}}
+                </div>
+                <span class="name">{{leftMenu[0].name}}</span>
+                <a href="mailto:{{leftMenu[0].email}}" class="email">{{leftMenu[0].email}}</a>
+            </div>
+            <!-- End user-->
+            <ion-list>
+                <ion-item ng-repeat="item in leftMenu[0].menu">
+                    <a data-ng-if="item.sref" menu-close class="{{item.class}}" href="javascript:" data-ui-sref="{{item.sref}}">{{item.name}}</a>
+                    <a data-ng-if="!item.sref" class="{{item.class}}" href="javascript:">{{item.name}}</a>
+                </ion-item>
+            </ion-list>
+            <!-- End list-->
+
+            <img class="logo" src="img/logo-side-bar.png" alt="logo">
+            <!-- End logo-->
+        </ion-content>
+    </ion-side-menu>
+
+</ion-side-menus>
+
+
+<div class="speech-screen {{showSpeeh?'show':''}}">
+    <a href="javascript:" class="menu-close" data-ng-click="hideSpeech()"></a>
+    <!-- End close-->
+    <div class="text-area">
+        <a href="javascript:" data-ng-if="!showResults" class="do-search" data-ng-click="showResult()"></a>
+
+        <div class="search" data-ng-if="showResults">
+            <input id="search-input" focus-me="shouldBeOpen" data-ng-if="showEdit" class="search-text animate-if" data-ng-model="searchText" data-ng-enter="doSearch()"/>
+            <span data-ng-if="!showEdit" class="text animate-if">"{{searchText}}"</span>
+            <a data-ng-if="!showEdit" href="javascript:" data-ng-click="editShow()" class="edit animate-if">Tap to edit</a>
+        </div>
+
+        <div class="info animate-if" data-ng-if="!showResults">Please say a customer name, company name, address, and/or 10 digit phone number</div>
+        <div class="info animate-if" data-ng-if="showResults">Sorry, no match found</div>
+    </div>
+    <!-- End text-area-->
+    <a href="javascript:" class="do-speech"></a>
+    <!-- End do-speech-->
+</div>
+<!-- End speech-->

@@ -1,0 +1,68 @@
+/* 
+  Localizable.strings
+  CardinalHealth
+
+  Created by Volkov Alexander on 23.06.15.
+  Modified by Volkov Alexander on 16.07.15.
+  Modified by Volkov Alexander on 22.09.15.
+  Copyright (c) 2015 Topcoder. All rights reserved.
+*/
+
+"DASHBOARD"="Dashboard";
+
+// Buttons and short labels
+"NEXT"="Next";
+"DONE"="Done";
+"Cancel"="Cancel";
+"Error"="Error";
+"Submit"="Submit";
+"GO_BACK"="Go Back";
+"OPEN_HOME"="Open Home screen";
+"YES"="Yes";
+"OK"="OK";
+"Save"="Save";
+
+// Titles
+"Anonymous"="Anonymous";
+"ALL_IDEAS"="All actions";
+"NEW_IDEAS"="New actions";
+"MY_IDEAS"="My actions";
+"IDEAS"="Actions";
+"SUBMIT_IDEAS"="Submit actions";
+"SETTINGS"="Settings";
+
+// Messages
+"NO_NEW_IDEAS"="There are no new actions since your last visit";
+"YOU_HAVE_NO_IDEAS"="You have not added any action";
+"NO_IDEAS"="There are no actions";
+"NOTHING_FOUND"="Nothing found";
+"ERROR_EMPTY_STRING"="Please fill all required fields";
+"ERROR_CHARACTER_LIMIT"="Please reduce the length of the text. You can submit only less than %number% characters";
+"WHAT_TO_DO"="What to do next?";
+"ALERT_TITLE_UNSAVED_CHANGES" = "Unsaved Changes";
+"ALERT_TEXT_UNSAVED_CHANGES"="Are you sure you want to close? Any changes you have made will be lost.";
+"BY_ANONYMOUS_1"="by ";
+"BY_ANONYMOUS_2"="Anonymous";
+"EMAIL_FORMAT"="Incorrect email format: %email%";
+"EMAIL_EMPTY"="Please specify correct email.";
+"EMAIL_REQUIRED"="Email is required";
+"THANKS_DETAILS"="We appreciate you trying to help us Change the World by promoting diversity and inclusion";
+
+// Home Overlay
+OVERLAY1_TEXT1="Number of your ";
+OVERLAY1_TEXT2="Submitted Actions";
+OVERLAY1_TEXT3=".\nyou can pick ones and review your actions";
+OVERLAY2_TEXT1="Number of your ";
+OVERLAY2_TEXT2="All Submitted Actions";
+OVERLAY2_TEXT3=".\n where you can discusses with others.";
+
+// Time labels
+"DAY_AGO"="day ago";
+"DAYS_AGO"="days ago";
+"HOUR_AGO"="hr ago";
+"HOURS_AGO"="hrs ago";
+"MIN_AGO"="min ago";
+"MINS_AGO"="mins ago";
+"SEC_AGO"="sec ago";
+"SECS_AGO"="sec ago";
+"JUST_NOW"="Just now";

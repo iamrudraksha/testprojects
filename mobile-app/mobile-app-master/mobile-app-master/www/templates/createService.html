@@ -1,0 +1,55 @@
+<ion-view title="Create Service Request" class="service-request">
+
+    <ion-nav-bar class="bar bar-header bar-calm" align-title="center">
+        <ion-nav-buttons side="left">
+            <button side="left" class="button button-icon button-back" data-ng-click="$parent.goBack()">Cancel</button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button side="right" class="button button-icon" data-ng-click="saveService()">Save</button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content class="create">
+
+        <div class="sub-header relative bar bar-energized">
+            <div class="user">
+                <span class="thumb">{{$parent.user.code}}</span>
+                <span class="name">{{$parent.user.name}}</span>
+                <span class="address">{{$parent.user.address1}}</span>
+                <span class="address">{{$parent.user.address2}}</span>
+
+                <div class="action">
+                    <a href="javascript:" data-ng-click="openPhoneModal()" class="phone"></a>
+                    <a href="javascript:" data-ng-click="openEmailModal()" class="mail"></a>
+                </div>
+            </div>
+        </div>
+        <!-- End sub-header-->
+
+        <ion-list>
+            <div class="item item-divider">
+                Service Request
+            </div>
+            <label class="item item-input item-select">
+                <span class="input-label">
+                    Service Type
+                </span>
+                <select>
+                    <option selected>Service Requests</option>
+                    <option>Service Requests 1</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Title</span>
+                <input type="text" placeholder="Type your title">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Details</span>
+                <textarea placeholder="Type your details"></textarea>
+            </label>
+        </ion-list>
+        <!-- End list-->
+
+    </ion-content>
+
+</ion-view>

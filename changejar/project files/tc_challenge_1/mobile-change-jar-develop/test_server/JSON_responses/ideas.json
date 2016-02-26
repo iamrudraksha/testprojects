@@ -1,0 +1,53 @@
+[
+ {
+    "ideaId": 1,
+    "anonymous": false,
+    "ideaTitle": "Idea without a profile icon",
+    "idea": "Example where there is no profile icon specified in the response. Create a informatic visual display board  in a common area where employees can post notices of what’s upcoming cultural events in their communities.",
+    "submitter": "Priyanka Chopra",
+    "submitterTitle": "Sr. Export Analyst-International Emerging Markets",
+    "submitterEmail": "hello@someplace.io",
+    "createdTimestamp": "2014-11-17T19:39:12"
+ },
+ {
+ "ideaId": 2,
+ "anonymous": false,
+ "ideaTitle": "Multicultural Perspectives in Entertainment monthly events",
+ "idea": "Celebrate the start of spring with Holi Fun Runs. All participant wear white at the starting line and Finish plastered in color. Don't hold yourself back and enjoy the color festival, throw colorful powder at one another before, during and after the run.",
+ "submitter": "Michael Keaton",
+ "submitterTitle": "Manager",
+ "submitterEmail": "hello@someplace.io",
+ "createdTimestamp": "2015-05-17T19:39:12",
+ "submitterIconUrl": "sampleIcon"
+ },
+ {
+ "ideaId": 3,
+ "anonymous": true,
+ "ideaTitle": "International Business meeting",
+ "idea": "At Cardinal Health, we are putting into action world-class diversity and inclusion strategies, solutions, programs and processes to create a robust culture that works for customers and employees. By respecting and appreciating diversity of thought, experience and background, we can be more innovative, increase employee engagement and improve customer and shareholder value.",
+ "createdTimestamp": "2015-06-23T10:00:00"
+ },
+ {
+ "ideaId": 4,
+ "anonymous": false,
+ "ideaTitle": "The idea has no user's title and icon (see details layout)",
+ "idea": "Example where there are no profile icon AND submitter's title specified in the response. Celebrate the start of spring with Holi Fun Runs. All participant wear white at the starting line and Finish plastered in color. Don't hold yourself back and enjoy the color festival, throw colorful powder at one another before, during and after the run.",
+ "submitter": "Nikolas Wichitta",
+ "submitterEmail": "hello@someplace.io",
+ "createdTimestamp": "2015-06-23T22:00:00"
+ },
+ {
+ "ideaId": 5,
+ "anonymous": true,
+ "ideaTitle": "Sticky notes with Group Vision Statements",
+ "idea": "Celebrate the start of spring with Holi Fun Runs. All participant wear white at the starting line and Finish plastered in color. Don't hold yourself back and enjoy the color festival, throw colorful powder at one another before, during and after the run.",
+ "createdTimestamp": "2015-06-23T23:59:00"
+ },
+ {
+ "ideaId": 6,
+ "anonymous": true,
+ "ideaTitle": "Very long text with scrolling",
+ "idea": "Celebrate the start of spring with Holi Fun Runs. All participant wear white at the starting line and Finish plastered in color. Don't hold yourself back and enjoy the color festival, throw colorful powder at one another before, during and after the run. \nCelebrate the start of spring with Holi Fun Runs. All participant wear white at the starting line and Finish plastered in color. Don't hold yourself back and enjoy the color festival, throw colorful powder at one another before, during and after the run.\nCelebrate the start of spring with Holi Fun Runs. All participant wear white at the starting line and Finish plastered in color. Don't hold yourself back and enjoy the color festival, throw colorful powder at one another before, during and after the run.",
+ "createdTimestamp": "2015-06-25T23:59:00"
+ }
+]

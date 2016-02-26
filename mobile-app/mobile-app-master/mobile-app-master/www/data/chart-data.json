@@ -1,0 +1,106 @@
+[
+  {
+    "cols": [
+      {
+        "id": "month",
+        "label": "Month",
+        "type": "string"
+      },
+      {
+        "id": "laptop-id",
+        "label": "Laptop",
+        "type": "number"
+      },
+      {"type": "string", "role": "tooltip", "p": {"html": true}}
+    ],
+    "rows": [
+      {
+        "c": [
+          {
+            "v": "January"
+          },
+          {
+            "v": 300,
+            "f":"$300"
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "February"
+          },
+          {
+            "v": 250,
+            "f":"$250"
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "March"
+          },
+          {
+            "v": 356,
+            "f":"$356"
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "April"
+          },
+          {
+            "v": 356,
+            "f":"$356"
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "May"
+          },
+          {
+            "v": 400,
+            "f":"$400"
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "June"
+          },
+          {
+            "v": 250,
+            "f":"$250"
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "July"
+          },
+          {
+            "v": 300,
+            "f":"$300"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"Total Account Balance",
+    "balance":"$ 345, 31 (2.82%)",
+    "duration":["1m","3m","6m","1y","2y+"],
+    "selectedDuration":"1m",
+    "saving":"$12M",
+    "checking":"$200M",
+    "loan":"$12M",
+    "credit":"$200M"
+  }
+]

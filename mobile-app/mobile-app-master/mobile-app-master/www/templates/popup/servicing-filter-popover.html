@@ -1,0 +1,9 @@
+<ion-popover-view class="service-filter-popup">
+    <ion-content>
+        <div class="list">
+            <a class="item {{item.val?'checked':''}}" href="javascript:" data-ng-repeat="item in filter" data-ng-click="item.val = !item.val">
+                {{item.label}}
+            </a>
+        </div>
+    </ion-content>
+</ion-popover-view>

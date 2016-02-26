@@ -1,0 +1,17 @@
+<ion-view class="intro-view" view-title="Intro">
+    <ion-content>
+
+        <img class="logo" src="img/logo.png" alt="logo">
+        <!-- End logo-->
+
+        <ion-slide-box data-ng-if="loadComplete" auto-play="true" slide-interval="{{sliderDuration}}" does-continue="true" on-slide-changed="change(index)">
+            <ion-slide data-ng-repeat="slide in introSlider">
+                <h2>{{slide.title}}</h2>
+                <p>{{slide.data}}</p>
+            </ion-slide>
+        </ion-slide-box>
+
+    </ion-content>
+    <a href="javascript:" data-ui-sref="login" class="skip">Skip This!</a>
+    <!-- End skip button-->
+</ion-view>

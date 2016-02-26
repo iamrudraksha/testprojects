@@ -1,0 +1,816 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD36098C1B3B57ED0038EBF4 /* IdeaDetailsSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36098B1B3B57ED0038EBF4 /* IdeaDetailsSummaryViewController.swift */; };
+		FD3609911B3B5E200038EBF4 /* IdeaDetailsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3609901B3B5E200038EBF4 /* IdeaDetailsContainerViewController.swift */; };
+		FD36099E1B3B956A0038EBF4 /* IdeaFullDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36099D1B3B956A0038EBF4 /* IdeaFullDetailsViewController.swift */; };
+		FD3609A11B3BA4610038EBF4 /* DetailsNavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3609A01B3BA4610038EBF4 /* DetailsNavigationBarViewController.swift */; };
+		FD3609A31B3BC9B90038EBF4 /* ThankScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = FD3609A21B3BC9B90038EBF4 /* ThankScreen.json */; };
+		FDA0DBF61B37AE4F00DECE90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DBF51B37AE4F00DECE90 /* AppDelegate.swift */; };
+		FDA0DBF91B37AE4F00DECE90 /* CardinalHealth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DBF71B37AE4F00DECE90 /* CardinalHealth.xcdatamodeld */; };
+		FDA0DBFB1B37AE4F00DECE90 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DBFA1B37AE4F00DECE90 /* RootViewController.swift */; };
+		FDA0DBFE1B37AE4F00DECE90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DBFC1B37AE4F00DECE90 /* Main.storyboard */; };
+		FDA0DC001B37AE4F00DECE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DBFF1B37AE4F00DECE90 /* Images.xcassets */; };
+		FDA0DC031B37AE4F00DECE90 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC011B37AE4F00DECE90 /* LaunchScreen.xib */; };
+		FDA0DC0F1B37AE5000DECE90 /* CardinalHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DC0E1B37AE5000DECE90 /* CardinalHealthTests.swift */; };
+		FDA0DC1D1B37B07900DECE90 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DC1C1B37B07900DECE90 /* WelcomeViewController.swift */; };
+		FDA0DC1F1B37B18400DECE90 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DC1E1B37B18400DECE90 /* UIExtensions.swift */; };
+		FDA0DC211B37B43E00DECE90 /* WelcomeScreenContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DC201B37B43E00DECE90 /* WelcomeScreenContent.swift */; };
+		FDA0DC241B37B66400DECE90 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DC231B37B66400DECE90 /* SwiftyJSON.swift */; };
+		FDA0DC271B37B6D800DECE90 /* WelcomScreenData.json in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC261B37B6D800DECE90 /* WelcomScreenData.json */; };
+		FDA0DC291B37B93200DECE90 /* WelcomeScreenContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DC281B37B93200DECE90 /* WelcomeScreenContentViewController.swift */; };
+		FDA0DC371B37BC2300DECE90 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC2B1B37BC1600DECE90 /* SourceSansPro-Black.otf */; };
+		FDA0DC381B37BC2300DECE90 /* SourceSansPro-BlackIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC2C1B37BC1600DECE90 /* SourceSansPro-BlackIt.otf */; };
+		FDA0DC391B37BC2300DECE90 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC2D1B37BC1600DECE90 /* SourceSansPro-Bold.otf */; };
+		FDA0DC3A1B37BC2300DECE90 /* SourceSansPro-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC2E1B37BC1600DECE90 /* SourceSansPro-BoldIt.otf */; };
+		FDA0DC3B1B37BC2300DECE90 /* SourceSansPro-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC2F1B37BC1600DECE90 /* SourceSansPro-ExtraLight.otf */; };
+		FDA0DC3C1B37BC2300DECE90 /* SourceSansPro-ExtraLightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC301B37BC1600DECE90 /* SourceSansPro-ExtraLightIt.otf */; };
+		FDA0DC3D1B37BC2300DECE90 /* SourceSansPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC311B37BC1600DECE90 /* SourceSansPro-It.otf */; };
+		FDA0DC3E1B37BC2300DECE90 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC321B37BC1600DECE90 /* SourceSansPro-Light.otf */; };
+		FDA0DC3F1B37BC2300DECE90 /* SourceSansPro-LightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC331B37BC1600DECE90 /* SourceSansPro-LightIt.otf */; };
+		FDA0DC401B37BC2300DECE90 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC341B37BC1600DECE90 /* SourceSansPro-Regular.otf */; };
+		FDA0DC411B37BC2300DECE90 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC351B37BC1600DECE90 /* SourceSansPro-Semibold.otf */; };
+		FDA0DC421B37BC2300DECE90 /* SourceSansPro-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDA0DC361B37BC1600DECE90 /* SourceSansPro-SemiboldIt.otf */; };
+		FDA0DC451B37DCF900DECE90 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0DC441B37DCF900DECE90 /* HomeViewController.swift */; };
+		FDD740FF1B38B60B009DB28D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDD740FE1B38B60B009DB28D /* Localizable.strings */; };
+		FDE219CC1B3C811D00362FB3 /* NotificationsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE219CB1B3C811D00362FB3 /* NotificationsWidget.swift */; };
+		FDE219CE1B3CA2A600362FB3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE219CD1B3CA2A600362FB3 /* SettingsViewController.swift */; };
+		FDE993DF1B39C58A00BBFF18 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE993DB1B39C58A00BBFF18 /* RestAPI.swift */; };
+		FDE993E01B39C58A00BBFF18 /* RestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE993DC1B39C58A00BBFF18 /* RestError.swift */; };
+		FDE993E11B39C58A00BBFF18 /* RestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE993DD1B39C58A00BBFF18 /* RestRequest.swift */; };
+		FDE993E21B39C58A00BBFF18 /* RestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE993DE1B39C58A00BBFF18 /* RestResponse.swift */; };
+		FDE993F21B39C5E400BBFF18 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE993EB1B39C5C900BBFF18 /* Alamofire.framework */; };
+		FDE993F31B39C5E400BBFF18 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FDE993EB1B39C5C900BBFF18 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FDE993F81B39C7BE00BBFF18 /* ValidationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE993F71B39C7BE00BBFF18 /* ValidationUtils.swift */; };
+		FDE993FA1B39C80F00BBFF18 /* LoggerListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE993F91B39C80F00BBFF18 /* LoggerListener.swift */; };
+		FDE993FC1B39C82000BBFF18 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE993FB1B39C82000BBFF18 /* Configuration.swift */; };
+		FDE993FE1B39C86C00BBFF18 /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDE993FD1B39C86C00BBFF18 /* configuration.plist */; };
+		FDE994021B39E0E400BBFF18 /* IdeasDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE994011B39E0E400BBFF18 /* IdeasDataSource.swift */; };
+		FDE994041B39E15200BBFF18 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE994031B39E15200BBFF18 /* UserInfo.swift */; };
+		FDE9940C1B3A1A0E00BBFF18 /* SubmitIdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9940B1B3A1A0E00BBFF18 /* SubmitIdeaViewController.swift */; };
+		FDE9940E1B3A32ED00BBFF18 /* ThankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9940D1B3A32ED00BBFF18 /* ThankViewController.swift */; };
+		FDE994141B3A7A3C00BBFF18 /* ConfirmDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE994131B3A7A3C00BBFF18 /* ConfirmDialog.swift */; };
+		FDEDDC961B38DFBF00BF3C56 /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEDDC951B38DFBF00BF3C56 /* OverlayViewController.swift */; };
+		FDEDDC9A1B39154100BF3C56 /* IdeasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEDDC991B39154100BF3C56 /* IdeasListViewController.swift */; };
+		FDEDDC9C1B39173F00BF3C56 /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEDDC9B1B39173F00BF3C56 /* Idea.swift */; };
+		FDF405841B38AC3C007BBFCF /* HelpfulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF405831B38AC3C007BBFCF /* HelpfulFunctions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FDA0DC091B37AE5000DECE90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDA0DBE81B37AE4F00DECE90 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FDA0DBEF1B37AE4F00DECE90;
+			remoteInfo = CardinalHealth;
+		};
+		FDE993EA1B39C5C900BBFF18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDE993E31B39C5C900BBFF18 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		FDE993EC1B39C5C900BBFF18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDE993E31B39C5C900BBFF18 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		FDE993EE1B39C5C900BBFF18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDE993E31B39C5C900BBFF18 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		FDE993F01B39C5C900BBFF18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDE993E31B39C5C900BBFF18 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		FDE993F41B39C5E400BBFF18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDE993E31B39C5C900BBFF18 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FDE993F61B39C5E400BBFF18 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FDE993F31B39C5E400BBFF18 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FD36098B1B3B57ED0038EBF4 /* IdeaDetailsSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaDetailsSummaryViewController.swift; sourceTree = "<group>"; };
+		FD3609901B3B5E200038EBF4 /* IdeaDetailsContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaDetailsContainerViewController.swift; sourceTree = "<group>"; };
+		FD36099D1B3B956A0038EBF4 /* IdeaFullDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaFullDetailsViewController.swift; sourceTree = "<group>"; };
+		FD3609A01B3BA4610038EBF4 /* DetailsNavigationBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsNavigationBarViewController.swift; sourceTree = "<group>"; };
+		FD3609A21B3BC9B90038EBF4 /* ThankScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ThankScreen.json; sourceTree = "<group>"; };
+		FDA0DBF01B37AE4F00DECE90 /* CardinalHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardinalHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDA0DBF41B37AE4F00DECE90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDA0DBF51B37AE4F00DECE90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FDA0DBF81B37AE4F00DECE90 /* CardinalHealth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardinalHealth.xcdatamodel; sourceTree = "<group>"; };
+		FDA0DBFA1B37AE4F00DECE90 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		FDA0DBFD1B37AE4F00DECE90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FDA0DBFF1B37AE4F00DECE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FDA0DC021B37AE4F00DECE90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FDA0DC081B37AE5000DECE90 /* CardinalHealthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardinalHealthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDA0DC0D1B37AE5000DECE90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDA0DC0E1B37AE5000DECE90 /* CardinalHealthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardinalHealthTests.swift; sourceTree = "<group>"; };
+		FDA0DC1C1B37B07900DECE90 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		FDA0DC1E1B37B18400DECE90 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		FDA0DC201B37B43E00DECE90 /* WelcomeScreenContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenContent.swift; sourceTree = "<group>"; };
+		FDA0DC231B37B66400DECE90 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = external/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = SOURCE_ROOT; };
+		FDA0DC261B37B6D800DECE90 /* WelcomScreenData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WelcomScreenData.json; sourceTree = "<group>"; };
+		FDA0DC281B37B93200DECE90 /* WelcomeScreenContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenContentViewController.swift; sourceTree = "<group>"; };
+		FDA0DC2B1B37BC1600DECE90 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Black.otf"; path = "Fonts/SourceSansPro-Black.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC2C1B37BC1600DECE90 /* SourceSansPro-BlackIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-BlackIt.otf"; path = "Fonts/SourceSansPro-BlackIt.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC2D1B37BC1600DECE90 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Bold.otf"; path = "Fonts/SourceSansPro-Bold.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC2E1B37BC1600DECE90 /* SourceSansPro-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-BoldIt.otf"; path = "Fonts/SourceSansPro-BoldIt.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC2F1B37BC1600DECE90 /* SourceSansPro-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-ExtraLight.otf"; path = "Fonts/SourceSansPro-ExtraLight.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC301B37BC1600DECE90 /* SourceSansPro-ExtraLightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-ExtraLightIt.otf"; path = "Fonts/SourceSansPro-ExtraLightIt.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC311B37BC1600DECE90 /* SourceSansPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-It.otf"; path = "Fonts/SourceSansPro-It.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC321B37BC1600DECE90 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Light.otf"; path = "Fonts/SourceSansPro-Light.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC331B37BC1600DECE90 /* SourceSansPro-LightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-LightIt.otf"; path = "Fonts/SourceSansPro-LightIt.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC341B37BC1600DECE90 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Regular.otf"; path = "Fonts/SourceSansPro-Regular.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC351B37BC1600DECE90 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Semibold.otf"; path = "Fonts/SourceSansPro-Semibold.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC361B37BC1600DECE90 /* SourceSansPro-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-SemiboldIt.otf"; path = "Fonts/SourceSansPro-SemiboldIt.otf"; sourceTree = SOURCE_ROOT; };
+		FDA0DC441B37DCF900DECE90 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FDD740FE1B38B60B009DB28D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		FDE219CB1B3C811D00362FB3 /* NotificationsWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsWidget.swift; sourceTree = "<group>"; };
+		FDE219CD1B3CA2A600362FB3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FDE993DB1B39C58A00BBFF18 /* RestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
+		FDE993DC1B39C58A00BBFF18 /* RestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestError.swift; sourceTree = "<group>"; };
+		FDE993DD1B39C58A00BBFF18 /* RestRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestRequest.swift; sourceTree = "<group>"; };
+		FDE993DE1B39C58A00BBFF18 /* RestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestResponse.swift; sourceTree = "<group>"; };
+		FDE993E31B39C5C900BBFF18 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = external/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		FDE993F71B39C7BE00BBFF18 /* ValidationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationUtils.swift; sourceTree = "<group>"; };
+		FDE993F91B39C80F00BBFF18 /* LoggerListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerListener.swift; sourceTree = "<group>"; };
+		FDE993FB1B39C82000BBFF18 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		FDE993FD1B39C86C00BBFF18 /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configuration.plist; sourceTree = "<group>"; };
+		FDE994011B39E0E400BBFF18 /* IdeasDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeasDataSource.swift; sourceTree = "<group>"; };
+		FDE994031B39E15200BBFF18 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		FDE9940B1B3A1A0E00BBFF18 /* SubmitIdeaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitIdeaViewController.swift; sourceTree = "<group>"; };
+		FDE9940D1B3A32ED00BBFF18 /* ThankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankViewController.swift; sourceTree = "<group>"; };
+		FDE994131B3A7A3C00BBFF18 /* ConfirmDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDialog.swift; sourceTree = "<group>"; };
+		FDEDDC951B38DFBF00BF3C56 /* OverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
+		FDEDDC991B39154100BF3C56 /* IdeasListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeasListViewController.swift; sourceTree = "<group>"; };
+		FDEDDC9B1B39173F00BF3C56 /* Idea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
+		FDF405831B38AC3C007BBFCF /* HelpfulFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpfulFunctions.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FDA0DBED1B37AE4F00DECE90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDE993F21B39C5E400BBFF18 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDA0DC051B37AE5000DECE90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD36099F1B3BA43E0038EBF4 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				FD36098B1B3B57ED0038EBF4 /* IdeaDetailsSummaryViewController.swift */,
+				FD3609901B3B5E200038EBF4 /* IdeaDetailsContainerViewController.swift */,
+				FD36099D1B3B956A0038EBF4 /* IdeaFullDetailsViewController.swift */,
+				FD3609A01B3BA4610038EBF4 /* DetailsNavigationBarViewController.swift */,
+			);
+			name = Details;
+			sourceTree = "<group>";
+		};
+		FDA0DBE71B37AE4F00DECE90 = {
+			isa = PBXGroup;
+			children = (
+				FDE993E31B39C5C900BBFF18 /* Alamofire.xcodeproj */,
+				FDA0DBF21B37AE4F00DECE90 /* CardinalHealth */,
+				FDA0DC0B1B37AE5000DECE90 /* CardinalHealthTests */,
+				FDA0DBF11B37AE4F00DECE90 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FDA0DBF11B37AE4F00DECE90 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DBF01B37AE4F00DECE90 /* CardinalHealth.app */,
+				FDA0DC081B37AE5000DECE90 /* CardinalHealthTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FDA0DBF21B37AE4F00DECE90 /* CardinalHealth */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DC191B37AE7500DECE90 /* Model */,
+				FDA0DC1B1B37AE8300DECE90 /* Data Sources */,
+				FDA0DC1A1B37AE7900DECE90 /* Utils */,
+				FDA0DC181B37AE6E00DECE90 /* View Controllers */,
+				FDE219C71B3C811100362FB3 /* Views */,
+				FDA0DC221B37B65500DECE90 /* ThirdParty */,
+				FDD740FD1B38B5FC009DB28D /* Resources */,
+				FDA0DBF51B37AE4F00DECE90 /* AppDelegate.swift */,
+				FDA0DBF31B37AE4F00DECE90 /* Supporting Files */,
+			);
+			path = CardinalHealth;
+			sourceTree = "<group>";
+		};
+		FDA0DBF31B37AE4F00DECE90 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DC2A1B37BC0F00DECE90 /* Fonts */,
+				FDA0DC251B37B6A000DECE90 /* Screen Content */,
+				FDA0DBF41B37AE4F00DECE90 /* Info.plist */,
+				FDE993FD1B39C86C00BBFF18 /* configuration.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDA0DC0B1B37AE5000DECE90 /* CardinalHealthTests */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DC0E1B37AE5000DECE90 /* CardinalHealthTests.swift */,
+				FDA0DC0C1B37AE5000DECE90 /* Supporting Files */,
+			);
+			path = CardinalHealthTests;
+			sourceTree = "<group>";
+		};
+		FDA0DC0C1B37AE5000DECE90 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DC0D1B37AE5000DECE90 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDA0DC181B37AE6E00DECE90 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DBFA1B37AE4F00DECE90 /* RootViewController.swift */,
+				FDA0DC1C1B37B07900DECE90 /* WelcomeViewController.swift */,
+				FDA0DC281B37B93200DECE90 /* WelcomeScreenContentViewController.swift */,
+				FDA0DC441B37DCF900DECE90 /* HomeViewController.swift */,
+				FDEDDC951B38DFBF00BF3C56 /* OverlayViewController.swift */,
+				FDEDDC991B39154100BF3C56 /* IdeasListViewController.swift */,
+				FDE9940B1B3A1A0E00BBFF18 /* SubmitIdeaViewController.swift */,
+				FDE9940D1B3A32ED00BBFF18 /* ThankViewController.swift */,
+				FD36099F1B3BA43E0038EBF4 /* Details */,
+				FDE219CD1B3CA2A600362FB3 /* SettingsViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FDA0DC191B37AE7500DECE90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DC201B37B43E00DECE90 /* WelcomeScreenContent.swift */,
+				FDEDDC9B1B39173F00BF3C56 /* Idea.swift */,
+				FDE994031B39E15200BBFF18 /* UserInfo.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FDA0DC1A1B37AE7900DECE90 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FDE994131B3A7A3C00BBFF18 /* ConfirmDialog.swift */,
+				FDE993FB1B39C82000BBFF18 /* Configuration.swift */,
+				FDE993F91B39C80F00BBFF18 /* LoggerListener.swift */,
+				FDE993F71B39C7BE00BBFF18 /* ValidationUtils.swift */,
+				FDA0DC1E1B37B18400DECE90 /* UIExtensions.swift */,
+				FDF405831B38AC3C007BBFCF /* HelpfulFunctions.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		FDA0DC1B1B37AE8300DECE90 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FDE993DA1B39C58100BBFF18 /* Core API */,
+				FDE994011B39E0E400BBFF18 /* IdeasDataSource.swift */,
+			);
+			name = "Data Sources";
+			sourceTree = "<group>";
+		};
+		FDA0DC221B37B65500DECE90 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DC231B37B66400DECE90 /* SwiftyJSON.swift */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		FDA0DC251B37B6A000DECE90 /* Screen Content */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DC261B37B6D800DECE90 /* WelcomScreenData.json */,
+				FD3609A21B3BC9B90038EBF4 /* ThankScreen.json */,
+			);
+			name = "Screen Content";
+			sourceTree = "<group>";
+		};
+		FDA0DC2A1B37BC0F00DECE90 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0DC2B1B37BC1600DECE90 /* SourceSansPro-Black.otf */,
+				FDA0DC2C1B37BC1600DECE90 /* SourceSansPro-BlackIt.otf */,
+				FDA0DC2D1B37BC1600DECE90 /* SourceSansPro-Bold.otf */,
+				FDA0DC2E1B37BC1600DECE90 /* SourceSansPro-BoldIt.otf */,
+				FDA0DC2F1B37BC1600DECE90 /* SourceSansPro-ExtraLight.otf */,
+				FDA0DC301B37BC1600DECE90 /* SourceSansPro-ExtraLightIt.otf */,
+				FDA0DC311B37BC1600DECE90 /* SourceSansPro-It.otf */,
+				FDA0DC321B37BC1600DECE90 /* SourceSansPro-Light.otf */,
+				FDA0DC331B37BC1600DECE90 /* SourceSansPro-LightIt.otf */,
+				FDA0DC341B37BC1600DECE90 /* SourceSansPro-Regular.otf */,
+				FDA0DC351B37BC1600DECE90 /* SourceSansPro-Semibold.otf */,
+				FDA0DC361B37BC1600DECE90 /* SourceSansPro-SemiboldIt.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		FDD740FD1B38B5FC009DB28D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FDD740FE1B38B60B009DB28D /* Localizable.strings */,
+				FDA0DBFC1B37AE4F00DECE90 /* Main.storyboard */,
+				FDA0DBFF1B37AE4F00DECE90 /* Images.xcassets */,
+				FDA0DC011B37AE4F00DECE90 /* LaunchScreen.xib */,
+				FDA0DBF71B37AE4F00DECE90 /* CardinalHealth.xcdatamodeld */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FDE219C71B3C811100362FB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FDE219CB1B3C811D00362FB3 /* NotificationsWidget.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		FDE993DA1B39C58100BBFF18 /* Core API */ = {
+			isa = PBXGroup;
+			children = (
+				FDE993DB1B39C58A00BBFF18 /* RestAPI.swift */,
+				FDE993DC1B39C58A00BBFF18 /* RestError.swift */,
+				FDE993DD1B39C58A00BBFF18 /* RestRequest.swift */,
+				FDE993DE1B39C58A00BBFF18 /* RestResponse.swift */,
+			);
+			name = "Core API";
+			sourceTree = "<group>";
+		};
+		FDE993E41B39C5C900BBFF18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDE993EB1B39C5C900BBFF18 /* Alamofire.framework */,
+				FDE993ED1B39C5C900BBFF18 /* Alamofire.framework */,
+				FDE993EF1B39C5C900BBFF18 /* Alamofire iOS Tests.xctest */,
+				FDE993F11B39C5C900BBFF18 /* Alamofire OSX Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FDA0DBEF1B37AE4F00DECE90 /* CardinalHealth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDA0DC121B37AE5000DECE90 /* Build configuration list for PBXNativeTarget "CardinalHealth" */;
+			buildPhases = (
+				FDA0DBEC1B37AE4F00DECE90 /* Sources */,
+				FDA0DBED1B37AE4F00DECE90 /* Frameworks */,
+				FDA0DBEE1B37AE4F00DECE90 /* Resources */,
+				FDE993F61B39C5E400BBFF18 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDE993F51B39C5E400BBFF18 /* PBXTargetDependency */,
+			);
+			name = CardinalHealth;
+			productName = CardinalHealth;
+			productReference = FDA0DBF01B37AE4F00DECE90 /* CardinalHealth.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FDA0DC071B37AE5000DECE90 /* CardinalHealthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDA0DC151B37AE5000DECE90 /* Build configuration list for PBXNativeTarget "CardinalHealthTests" */;
+			buildPhases = (
+				FDA0DC041B37AE5000DECE90 /* Sources */,
+				FDA0DC051B37AE5000DECE90 /* Frameworks */,
+				FDA0DC061B37AE5000DECE90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDA0DC0A1B37AE5000DECE90 /* PBXTargetDependency */,
+			);
+			name = CardinalHealthTests;
+			productName = CardinalHealthTests;
+			productReference = FDA0DC081B37AE5000DECE90 /* CardinalHealthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FDA0DBE81B37AE4F00DECE90 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Topcoder;
+				TargetAttributes = {
+					FDA0DBEF1B37AE4F00DECE90 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					FDA0DC071B37AE5000DECE90 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = FDA0DBEF1B37AE4F00DECE90;
+					};
+				};
+			};
+			buildConfigurationList = FDA0DBEB1B37AE4F00DECE90 /* Build configuration list for PBXProject "CardinalHealth" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FDA0DBE71B37AE4F00DECE90;
+			productRefGroup = FDA0DBF11B37AE4F00DECE90 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FDE993E41B39C5C900BBFF18 /* Products */;
+					ProjectRef = FDE993E31B39C5C900BBFF18 /* Alamofire.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				FDA0DBEF1B37AE4F00DECE90 /* CardinalHealth */,
+				FDA0DC071B37AE5000DECE90 /* CardinalHealthTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FDE993EB1B39C5C900BBFF18 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = FDE993EA1B39C5C900BBFF18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FDE993ED1B39C5C900BBFF18 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = FDE993EC1B39C5C900BBFF18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FDE993EF1B39C5C900BBFF18 /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = FDE993EE1B39C5C900BBFF18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FDE993F11B39C5C900BBFF18 /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = FDE993F01B39C5C900BBFF18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FDA0DBEE1B37AE4F00DECE90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDD740FF1B38B60B009DB28D /* Localizable.strings in Resources */,
+				FDA0DC371B37BC2300DECE90 /* SourceSansPro-Black.otf in Resources */,
+				FDA0DC381B37BC2300DECE90 /* SourceSansPro-BlackIt.otf in Resources */,
+				FD3609A31B3BC9B90038EBF4 /* ThankScreen.json in Resources */,
+				FDA0DC391B37BC2300DECE90 /* SourceSansPro-Bold.otf in Resources */,
+				FDA0DC3A1B37BC2300DECE90 /* SourceSansPro-BoldIt.otf in Resources */,
+				FDA0DC3B1B37BC2300DECE90 /* SourceSansPro-ExtraLight.otf in Resources */,
+				FDA0DC3C1B37BC2300DECE90 /* SourceSansPro-ExtraLightIt.otf in Resources */,
+				FDA0DC3D1B37BC2300DECE90 /* SourceSansPro-It.otf in Resources */,
+				FDA0DC3E1B37BC2300DECE90 /* SourceSansPro-Light.otf in Resources */,
+				FDA0DC3F1B37BC2300DECE90 /* SourceSansPro-LightIt.otf in Resources */,
+				FDA0DC401B37BC2300DECE90 /* SourceSansPro-Regular.otf in Resources */,
+				FDA0DC411B37BC2300DECE90 /* SourceSansPro-Semibold.otf in Resources */,
+				FDA0DC421B37BC2300DECE90 /* SourceSansPro-SemiboldIt.otf in Resources */,
+				FDE993FE1B39C86C00BBFF18 /* configuration.plist in Resources */,
+				FDA0DBFE1B37AE4F00DECE90 /* Main.storyboard in Resources */,
+				FDA0DC031B37AE4F00DECE90 /* LaunchScreen.xib in Resources */,
+				FDA0DC271B37B6D800DECE90 /* WelcomScreenData.json in Resources */,
+				FDA0DC001B37AE4F00DECE90 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDA0DC061B37AE5000DECE90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FDA0DBEC1B37AE4F00DECE90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDEDDC9C1B39173F00BF3C56 /* Idea.swift in Sources */,
+				FDE9940E1B3A32ED00BBFF18 /* ThankViewController.swift in Sources */,
+				FDA0DC211B37B43E00DECE90 /* WelcomeScreenContent.swift in Sources */,
+				FDE993FA1B39C80F00BBFF18 /* LoggerListener.swift in Sources */,
+				FDE993DF1B39C58A00BBFF18 /* RestAPI.swift in Sources */,
+				FD36099E1B3B956A0038EBF4 /* IdeaFullDetailsViewController.swift in Sources */,
+				FDE993E11B39C58A00BBFF18 /* RestRequest.swift in Sources */,
+				FDA0DC291B37B93200DECE90 /* WelcomeScreenContentViewController.swift in Sources */,
+				FDE993FC1B39C82000BBFF18 /* Configuration.swift in Sources */,
+				FDA0DBFB1B37AE4F00DECE90 /* RootViewController.swift in Sources */,
+				FDA0DC1D1B37B07900DECE90 /* WelcomeViewController.swift in Sources */,
+				FDE9940C1B3A1A0E00BBFF18 /* SubmitIdeaViewController.swift in Sources */,
+				FDE994021B39E0E400BBFF18 /* IdeasDataSource.swift in Sources */,
+				FDE994141B3A7A3C00BBFF18 /* ConfirmDialog.swift in Sources */,
+				FDE993E01B39C58A00BBFF18 /* RestError.swift in Sources */,
+				FDA0DBF61B37AE4F00DECE90 /* AppDelegate.swift in Sources */,
+				FDA0DC451B37DCF900DECE90 /* HomeViewController.swift in Sources */,
+				FD3609A11B3BA4610038EBF4 /* DetailsNavigationBarViewController.swift in Sources */,
+				FDF405841B38AC3C007BBFCF /* HelpfulFunctions.swift in Sources */,
+				FDEDDC961B38DFBF00BF3C56 /* OverlayViewController.swift in Sources */,
+				FDE219CE1B3CA2A600362FB3 /* SettingsViewController.swift in Sources */,
+				FDA0DC1F1B37B18400DECE90 /* UIExtensions.swift in Sources */,
+				FDEDDC9A1B39154100BF3C56 /* IdeasListViewController.swift in Sources */,
+				FDE993E21B39C58A00BBFF18 /* RestResponse.swift in Sources */,
+				FDA0DC241B37B66400DECE90 /* SwiftyJSON.swift in Sources */,
+				FDE219CC1B3C811D00362FB3 /* NotificationsWidget.swift in Sources */,
+				FDE993F81B39C7BE00BBFF18 /* ValidationUtils.swift in Sources */,
+				FDE994041B39E15200BBFF18 /* UserInfo.swift in Sources */,
+				FD3609911B3B5E200038EBF4 /* IdeaDetailsContainerViewController.swift in Sources */,
+				FDA0DBF91B37AE4F00DECE90 /* CardinalHealth.xcdatamodeld in Sources */,
+				FD36098C1B3B57ED0038EBF4 /* IdeaDetailsSummaryViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDA0DC041B37AE5000DECE90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDA0DC0F1B37AE5000DECE90 /* CardinalHealthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FDA0DC0A1B37AE5000DECE90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FDA0DBEF1B37AE4F00DECE90 /* CardinalHealth */;
+			targetProxy = FDA0DC091B37AE5000DECE90 /* PBXContainerItemProxy */;
+		};
+		FDE993F51B39C5E400BBFF18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = FDE993F41B39C5E400BBFF18 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FDA0DBFC1B37AE4F00DECE90 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDA0DBFD1B37AE4F00DECE90 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FDA0DC011B37AE4F00DECE90 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDA0DC021B37AE4F00DECE90 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FDA0DC101B37AE5000DECE90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FDA0DC111B37AE5000DECE90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FDA0DC131B37AE5000DECE90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CardinalHealth/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FDA0DC141B37AE5000DECE90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CardinalHealth/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FDA0DC161B37AE5000DECE90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CardinalHealthTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardinalHealth.app/CardinalHealth";
+			};
+			name = Debug;
+		};
+		FDA0DC171B37AE5000DECE90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CardinalHealthTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardinalHealth.app/CardinalHealth";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FDA0DBEB1B37AE4F00DECE90 /* Build configuration list for PBXProject "CardinalHealth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDA0DC101B37AE5000DECE90 /* Debug */,
+				FDA0DC111B37AE5000DECE90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDA0DC121B37AE5000DECE90 /* Build configuration list for PBXNativeTarget "CardinalHealth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDA0DC131B37AE5000DECE90 /* Debug */,
+				FDA0DC141B37AE5000DECE90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDA0DC151B37AE5000DECE90 /* Build configuration list for PBXNativeTarget "CardinalHealthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDA0DC161B37AE5000DECE90 /* Debug */,
+				FDA0DC171B37AE5000DECE90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FDA0DBF71B37AE4F00DECE90 /* CardinalHealth.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FDA0DBF81B37AE4F00DECE90 /* CardinalHealth.xcdatamodel */,
+			);
+			currentVersion = FDA0DBF81B37AE4F00DECE90 /* CardinalHealth.xcdatamodel */;
+			path = CardinalHealth.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FDA0DBE81B37AE4F00DECE90 /* Project object */;
+}

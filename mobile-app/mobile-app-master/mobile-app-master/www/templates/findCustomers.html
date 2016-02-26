@@ -1,0 +1,49 @@
+<ion-view title="Bank Ambassador">
+
+    <ion-nav-bar class="bar bar-header bar-calm"  align-title="center">
+
+        <ion-nav-buttons side="right">
+            <!-- Toggle right side menu -->
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content class="find-customers">
+        <div class="sub-header bar bar-energized">
+            <div class="welcome text-center">
+                Welcome to<br/>
+                <span>Bank Ambassador Mobile App</span>
+            </div>
+        </div>
+
+        <div class="recent-view {{recentView.open?'open':''}}">
+            <a href="javascript:" class="header" data-ng-click="toggleView()">Recently Viewed ({{recentView.views.length}})<i></i></a>
+            <ion-scroll direction="x">
+                <a href="javascript:" data-ui-sref="app.profile" class="viewer"
+                        ng-repeat="rv in recentView.views">
+                    <span class="code">{{rv.code}}</span>
+                    {{rv.name}}
+                </a>
+            </ion-scroll>
+        </div>
+        <!-- End recent-view-->
+
+        <div class="custom-search">
+            <h2>Customer Search</h2>
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="search" data-ng-enter="doSearch()" placeholder="Name, Company, Address, Phone">
+                    <a href="javascript:" data-ui-sref="app.search" class="icon ion-search placeholder-icon"></a>
+                </label>
+            </div>
+        </div>
+        <!-- End search-->
+
+        <a href="javascript:" class="open-speech" data-ng-click="openSpeech()"></a>
+        <!-- End speech-->
+
+    </ion-content>
+
+</ion-view>
+<!-- Main content, usually-->
+

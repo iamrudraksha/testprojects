@@ -1,0 +1,220 @@
+<ion-view title="History" class="history-page">
+
+    <ion-nav-bar class="bar bar-header bar-calm" align-title="center">
+        <ion-nav-buttons side="right">
+            <!-- Toggle right side menu -->
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content scroll="false" class="history-content">
+
+
+        <div class="tab-bar row">
+            <a href="javascript:" data-ng-click="changeTab('today')" class="col {{activeTab==='today'?'active':''}}">Today</a>
+            <a href="javascript:" data-ng-click="changeTab('week')" class="col {{activeTab==='week'?'active':''}}">Week</a>
+            <a href="javascript:" data-ng-click="changeTab('month')" class="col {{activeTab==='month'?'active':''}}">Month</a>
+            <a href="javascript:" data-ng-click="changeTab('all')" class="col {{activeTab==='all'?'active':''}}">All</a>
+        </div>
+
+        <ion-scroll data-ng-if="activeTab==='today'">
+            <ion-refresher
+                    pulling-text="Pull to refresh..."
+                    on-refresh="doRefresh()">
+            </ion-refresher>
+            <!-- End refresh-->
+
+            <ion-list
+                    show-delete="shouldShowDelete"
+                    show-reorder="shouldShowReorder"
+                    can-swipe="listCanSwipe" class="search-result-list">
+                <ion-item ng-repeat="item in historyToday"
+                          class="item-thumbnail-left">
+
+                    <span class="thumb">{{item.code}}</span>
+                    <span class="name">{{item.name}}</span>
+                    <span class="address">{{item.address1}}</span>
+                    <span class="address">{{item.address2}}</span>
+                    <a href="javascript:" data-ng-click="openPhoneModal()" class="phone" >{{item.phone}}</a>
+                    <a href="javascript:" data-ng-click="openEmailModal()" class="email">{{item.email}}</a>
+
+                    <div class="status-distance">
+                        <span class=" {{item.include==='Consumer'?'energized':'balanced'}}">{{item.include}}</span>
+                        <button class="button button-small button-calm">{{item.distance}}</button>
+                    </div>
+
+                    <a href="javascript:" data-ui-sref="app.profile" class="link"></a>
+
+                    <ion-option-button class="button-balanced"
+                                       ng-click="request(item)" data-ui-sref="app.createService">
+                        <i class="request"></i>
+                        <span>Create Service<br/> Request</span>
+                    </ion-option-button>
+                    <ion-option-button class="button-energized"
+                                       ng-click="refferel(item)" data-ui-sref="app.createReferral">
+                        <i class="referral"></i>
+                        <span>Create <br/> Referral</span>
+                    </ion-option-button>
+
+                </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll
+                    on-infinite="loadMoreToday()"
+                    distance="0" class="infinite-scroll">
+            </ion-infinite-scroll>
+
+        </ion-scroll>
+
+        <ion-scroll data-ng-if="activeTab==='week'">
+            <ion-refresher
+                    pulling-text="Pull to refresh..."
+                    on-refresh="doRefresh()">
+            </ion-refresher>
+            <!-- End refresh-->
+
+            <ion-list
+                    show-delete="shouldShowDelete"
+                    show-reorder="shouldShowReorder"
+                    can-swipe="listCanSwipe" class="search-result-list">
+                <ion-item ng-repeat="item in historyWeek"
+                          class="item-thumbnail-left">
+
+                    <span class="thumb">{{item.code}}</span>
+                    <span class="name">{{item.name}}</span>
+                    <span class="address">{{item.address1}}</span>
+                    <span class="address">{{item.address2}}</span>
+                    <a href="javascript:" data-ng-click="openPhoneModal()" class="phone" >{{item.phone}}</a>
+                    <a href="javascript:" data-ng-click="openEmailModal()" class="email">{{item.email}}</a>
+
+                    <div class="status-distance">
+                        <span class=" {{item.include==='Consumer'?'energized':'balanced'}}">{{item.include}}</span>
+                        <button class="button button-small button-calm">{{item.distance}}</button>
+                    </div>
+
+                    <a href="javascript:" data-ui-sref="app.profile" class="link"></a>
+
+                    <ion-option-button class="button-balanced"
+                                       ng-click="request(item)" data-ui-sref="app.createService">
+                        <i class="request"></i>
+                        <span>Create Service<br/> Request</span>
+                    </ion-option-button>
+                    <ion-option-button class="button-energized"
+                                       ng-click="refferel(item)" data-ui-sref="app.createReferral">
+                        <i class="referral"></i>
+                        <span>Create <br/> Referral</span>
+                    </ion-option-button>
+
+                </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll
+                    on-infinite="loadMoreWeek()"
+                    distance="0" class="infinite-scroll">
+            </ion-infinite-scroll>
+
+        </ion-scroll>
+
+        <ion-scroll data-ng-if="activeTab==='month'">
+            <ion-refresher
+                    pulling-text="Pull to refresh..."
+                    on-refresh="doRefresh()">
+            </ion-refresher>
+            <!-- End refresh-->
+
+            <ion-list
+                    show-delete="shouldShowDelete"
+                    show-reorder="shouldShowReorder"
+                    can-swipe="listCanSwipe" class="search-result-list">
+                <ion-item ng-repeat="item in historyMonth"
+                          class="item-thumbnail-left">
+
+                    <span class="thumb">{{item.code}}</span>
+                    <span class="name">{{item.name}}</span>
+                    <span class="address">{{item.address1}}</span>
+                    <span class="address">{{item.address2}}</span>
+                    <a href="javascript:" data-ng-click="openPhoneModal()" class="phone" >{{item.phone}}</a>
+                    <a href="javascript:" data-ng-click="openEmailModal()" class="email">{{item.email}}</a>
+
+                    <div class="status-distance">
+                        <span class=" {{item.include==='Consumer'?'energized':'balanced'}}">{{item.include}}</span>
+                        <button class="button button-small button-calm">{{item.distance}}</button>
+                    </div>
+
+                    <a href="javascript:" data-ui-sref="app.profile" class="link"></a>
+
+                    <ion-option-button class="button-balanced"
+                                       ng-click="request(item)" data-ui-sref="app.createService">
+                        <i class="request"></i>
+                        <span>Create Service<br/> Request</span>
+                    </ion-option-button>
+                    <ion-option-button class="button-energized"
+                                       ng-click="refferel(item)" data-ui-sref="app.createReferral">
+                        <i class="referral"></i>
+                        <span>Create <br/> Referral</span>
+                    </ion-option-button>
+
+                </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll
+                    on-infinite="loadMoreMonth()"
+                    distance="0" class="infinite-scroll">
+            </ion-infinite-scroll>
+
+        </ion-scroll>
+
+        <ion-scroll data-ng-if="activeTab==='all'">
+            <ion-refresher
+                    pulling-text="Pull to refresh..."
+                    on-refresh="doRefresh()">
+            </ion-refresher>
+            <!-- End refresh-->
+
+            <ion-list
+                    show-delete="shouldShowDelete"
+                    show-reorder="shouldShowReorder"
+                    can-swipe="listCanSwipe" class="search-result-list">
+                <ion-item ng-repeat="item in historyAll"
+                          class="item-thumbnail-left">
+
+                    <span class="thumb">{{item.code}}</span>
+                    <span class="name">{{item.name}}</span>
+                    <span class="address">{{item.address1}}</span>
+                    <span class="address">{{item.address2}}</span>
+                    <a href="javascript:" data-ng-click="openPhoneModal()" class="phone" >{{item.phone}}</a>
+                    <a href="javascript:" data-ng-click="openEmailModal()" class="email">{{item.email}}</a>
+
+                    <div class="status-distance">
+                        <span class=" {{item.include==='Consumer'?'energized':'balanced'}}">{{item.include}}</span>
+                        <button class="button button-small button-calm">{{item.distance}}</button>
+                    </div>
+
+                    <a href="javascript:" data-ui-sref="app.profile" class="link"></a>
+
+                    <ion-option-button class="button-balanced"
+                                       ng-click="request(item)" data-ui-sref="app.createService">
+                        <i class="request"></i>
+                        <span>Create Service<br/> Request</span>
+                    </ion-option-button>
+                    <ion-option-button class="button-energized"
+                                       ng-click="refferel(item)" data-ui-sref="app.createReferral">
+                        <i class="referral"></i>
+                        <span>Create <br/> Referral</span>
+                    </ion-option-button>
+
+                </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll
+                    on-infinite="loadMoreAll()"
+                    distance="0" class="infinite-scroll">
+            </ion-infinite-scroll>
+
+        </ion-scroll>
+
+
+    </ion-content>
+    <!-- End content-->
+
+</ion-view>

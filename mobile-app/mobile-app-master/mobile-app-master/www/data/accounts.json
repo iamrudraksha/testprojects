@@ -1,0 +1,51 @@
+[
+  {
+    "name":"Account Name Lorem",
+    "type":"Checking",
+    "num":"X-XXXX-XXXX-0000",
+    "amount":"-250",
+    "status":"Closed"
+  },
+  {
+    "name":"Account Name Lorem",
+    "type":"Saving",
+    "num":"X-XXXX-XXXX-0000",
+    "amount":"250",
+    "status":"Active"
+  },
+  {
+    "name":"Account Name Lorem",
+    "type":"Saving",
+    "num":"X-XXXX-XXXX-0000",
+    "amount":"250",
+    "status":"Frozen"
+  },
+  {
+    "name":"Account Name Lorem",
+    "type":"Investment",
+    "num":"X-XXXX-XXXX-0000",
+    "amount":"250",
+    "status":"Active"
+  },
+  {
+    "name":"Account Name Lorem",
+    "type":"Saving",
+    "num":"X-XXXX-XXXX-0000",
+    "amount":"250",
+    "status":"Frozen"
+  },
+  {
+    "name":"Account Name Lorem",
+    "type":"Investment",
+    "num":"X-XXXX-XXXX-0000",
+    "amount":"250",
+    "status":"Active"
+  },
+  {
+    "name":"Account Name Lorem",
+    "type":"Saving",
+    "num":"X-XXXX-XXXX-0000",
+    "amount":"250",
+    "status":"Frozen"
+  }
+]

@@ -1,0 +1,21 @@
+<ion-popover-view class="sort-popup">
+    <ion-content>
+        <div class="list">
+            <a class="item {{item.checked?'checked':''}}" href="javascript:" data-ng-repeat="item in sortBy.by" data-ng-click="toggleItem(item,'by')">
+                {{item.name}}
+            </a>
+            <div class="item item-divider">
+                Sort Option
+            </div>
+            <a class="item {{item.checked?'checked':''}}" href="javascript:" data-ng-repeat="item in sortBy.option" data-ng-click="toggleItem(item,'option')">
+                {{item.name}}
+            </a>
+            <div class="item item-divider">
+                Include
+            </div>
+            <a class="item {{item.checked?'checked':''}}" href="javascript:" data-ng-repeat="item in sortBy.include" data-ng-click="toggleItem(item,'include')">
+                {{item.name}}
+            </a>
+        </div>
+    </ion-content>
+</ion-popover-view>

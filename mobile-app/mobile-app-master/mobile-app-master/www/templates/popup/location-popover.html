@@ -1,0 +1,14 @@
+<ion-popover-view class="location-popup">
+    <ion-content>
+        <div class="distance">
+            <span class="val">{{distance.volume/10}} miles</span>
+            <span class="label">Distance from location</span>
+        </div>
+        <div class="range range-calm">
+            <input type="range" min="0" max="1000" name="volume" ng-model="distance.volume">
+            <span class="label left">0 miles</span>
+            <span class="label right">100 miles</span>
+        </div>
+        <button class="apply button button-dark" data-ng-click="closeLocationPopover()">Apply</button>
+    </ion-content>
+</ion-popover-view>

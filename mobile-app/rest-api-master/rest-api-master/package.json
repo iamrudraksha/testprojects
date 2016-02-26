@@ -1,0 +1,48 @@
+{
+  "name": "bank-ambassador-rest-api",
+  "description": "Bank Ambassador - NodeJS REST API Server",
+  "version": "1.0.0",
+  "private": true,
+  "author": "TCSCODER",
+  "keywords": [
+    "Bank Ambassador"
+  ],
+  "bugs": {
+    "url": ""
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": "",
+  "license": "LicenseRef-LICENSE",
+  "main": "server.js",
+  "dependencies": {
+    "async": "^1.5.0",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.14.1",
+    "common-errors": "^0.5.3",
+    "config": "^1.16.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "http-status": "^0.2.0",
+    "jwt-simple": "^0.3.1",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "mongoose": "^4.2.6",
+    "mongoose-auto-increment": "^5.0.1",
+    "winston": "^2.1.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "load-grunt-tasks": "^0.4.0"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

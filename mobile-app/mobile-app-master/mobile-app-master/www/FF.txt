@@ -1,0 +1,21 @@
+1. Reviewer Response: Search Page (11.jpg) History Page (24.jpg): If scroll left to show 'create buttons', arrow left stay visible,
+    need hide; --- https://i.gyazo.com/9d9d150924e783415cf5b71422a11106.png
+
+    I couldn't find a way for this with ionic list swipe. :(
+
+
+2. Reviewer Response: 04 screen: the customer search box should be vertically middle of the screen, but it shows more white gaps above the box.
+
+    this is because top area need some space to recent view toggle
+
+
+3.Reviewer Response: Focus the input, page will jump up and down
+
+    this cannot be fixed. it is browser issue.
+
+4.Reviewer Response: Sort by and location should open related fly-out.
+  Now if expand sort by flyout, click location, the flyout of sort by close but location flyout does not display, the expectation function is click each button should expand their flyout and close other.
+  Same for 14_1.jpg and 14_2.jpg
+
+    According to ionic implementation it is not possible.
+

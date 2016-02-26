@@ -1,0 +1,56 @@
+<ion-view title="Create Referral" class="service-request">
+
+    <ion-nav-bar class="bar bar-header bar-calm"  align-title="center">
+        <ion-nav-buttons side="left">
+            <button side="left" class="button button-icon button-back" data-ng-click="$parent.goBack()">Cancel</button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button side="right" class="button button-icon" data-ng-click="saveService()">Save</button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content class="create">
+
+        <div class="sub-header relative bar bar-energized">
+            <div class="user">
+                <span class="thumb">{{$parent.user.code}}</span>
+                <span class="name">{{$parent.user.name}}</span>
+                <span class="address">{{$parent.user.address1}}</span>
+                <span class="address">{{$parent.user.address2}}</span>
+
+                <div class="action">
+                    <a href="javascript:" data-ng-click="openPhoneModal()" class="phone"></a>
+                    <a href="javascript:" data-ng-click="openEmailModal()" class="mail"></a>
+                </div>
+            </div>
+        </div>
+        <!-- End sub-header-->
+
+        <ion-list>
+            <div class="item item-divider">
+                Referral (New Business)
+            </div>
+            <label class="item item-input">
+                <span class="input-label">Name</span>
+                <input type="text" placeholder="Name" value="Firstname Lastname">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Method of Contact</span>
+                <input type="text" placeholder="Method" value="1-2345-6789">
+            </label>
+            <label class="item item-input item-select">
+                <span class="input-label">
+                    Product of Interest
+                </span>
+                <select>
+                    <option selected>Select Your Product</option>
+                    <option>Product 1</option>
+                    <option>Product 1</option>
+                </select>
+            </label>
+        </ion-list>
+        <!-- End list-->
+
+    </ion-content>
+
+</ion-view>

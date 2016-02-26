@@ -1,0 +1,9 @@
+<ion-popover-view class="service-sort-popup">
+    <ion-content>
+        <div class="list">
+            <a class="item {{item.label===servicing.sortBy.label?'checked':''}}" href="javascript:" data-ng-repeat="item in servicing.sortOptions" data-ng-click="servicing.sortBy=item">
+                Date: {{item.label}}
+            </a>
+        </div>
+    </ion-content>
+</ion-popover-view>

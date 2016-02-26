@@ -1,0 +1,240 @@
+<ion-view title="{{pageTitle}}" class="profile-page">
+
+    <ion-nav-bar class="bar bar-header bar-calm" align-title="center">
+        <ion-nav-buttons side="left">
+            <button side="left" class="button button-icon button-back" data-ui-sref="app.search"><span>Recently<br/>Searched</span></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <!-- Toggle right side menu -->
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content>
+
+        <div class="sub-header relative bar bar-energized">
+            <div class="user">
+                <span class="thumb">{{$parent.user.code}}</span>
+                <span class="name">{{$parent.user.name}}</span>
+                <span class="address">{{$parent.user.address1}}</span>
+                <span class="address">{{$parent.user.address2}}</span>
+
+                <div class="action">
+                    <a href="javascript:" data-ng-click="openPhoneModal()" class="phone"></a>
+                    <a href="javascript:" data-ng-click="openEmailModal()" class="mail"></a>
+                </div>
+            </div>
+        </div>
+        <!-- End sub-header-->
+
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="currentSlide">
+
+            <ion-slide>
+                <ion-scroll>
+
+                    <div class="chart-holder">
+                        <div class="chart-name">
+                            <span class="name calm">{{chartObject.details.name}}</span>
+                            <span class="balance balanced">{{chartObject.details.balance}}</span>
+                        </div>
+                        <div class="chart" google-chart chart="chartObject"></div>
+                    </div>
+                    <div class="chart-duration dark-bg row">
+                        <div class="col" data-ng-repeat="du in chartObject.details.duration">
+                            <span data-ng-click="chartObject.details.selectedDuration=du" class="{{du===chartObject.details.selectedDuration?'calm-bg':''}}">{{du}}</span>
+                        </div>
+                    </div>
+                    <div class="chart-data row">
+                        <div class="col col-50">
+                            <i class="balanced-border">
+                                <span class="total">Total</span>
+                                <span class="val">{{chartObject.details.saving}}</span>
+                            </i>
+                            <span>Savings</span>
+                        </div>
+                        <div class="col col-50">
+                            <i class="energized-border">
+                                <span class="total">Total</span>
+                                <span class="val">{{chartObject.details.checking}}</span>
+                            </i>
+                            <span>Checking</span>
+                        </div>
+                    </div>
+                    <div class="chart-data row">
+                        <div class="col col-50">
+                            <i class="balanced-border">
+                                <span class="total">Total</span>
+                                <span class="val">{{chartObject.details.loan}}</span>
+                            </i>
+                            <span>Loans</span>
+                        </div>
+                        <div class="col col-50">
+                            <i class="assertive-border">
+                                <span class="total">Total</span>
+                                <span class="val">{{chartObject.details.credit}}</span>
+                            </i>
+                            <span>Credit Card</span>
+                        </div>
+                    </div>
+                </ion-scroll>
+            </ion-slide>
+
+            <ion-slide>
+                <ion-scroll>
+
+                    <ion-refresher
+                            pulling-text="Pull to refresh..."
+                            on-refresh="doRefresh()">
+                    </ion-refresher>
+                    <!-- End refresh-->
+                    <ion-list class="account-list">
+                        <ion-item data-ng-repeat="account in accounts">
+                            <span class="name">{{account.name}}</span>
+                            <span class="type calm">{{account.type}}</span>
+                            <span class="num">{{account.num}}</span>
+                            <div class="amount">
+                                <span class="val {{account.amount>0?'dark':'assertive'}}">$ {{account.amount|number:2}}</span>
+                                <span class="status {{account.status==='Closed'?'dark':account.status==='Frozen'?'energized':'balanced'}}">{{account.status}}</span>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+
+
+                    <ion-infinite-scroll
+                            on-infinite="loadMoreAccounts()"
+                            distance="0" class="infinite-scroll">
+                    </ion-infinite-scroll>
+                </ion-scroll>
+            </ion-slide>
+
+            <ion-slide>
+                <div class="filter-bar">
+                    <a href="javascript:" data-ng-click="openFilterPopover($event)" class="filter">Filter</a>
+                    <div class="sort">
+                        <span href="javascript:" class="label">Sort by</span>
+                        <a href="javascript:" data-ng-click="openSortPopover($event)" class="sort-val">Date: {{servicing.sortBy.label}}</a>
+                    </div>
+                </div>
+
+                <ion-scroll>
+
+                    <ion-refresher
+                            pulling-text="Pull to refresh..."
+                            on-refresh="doRefresh()">
+                    </ion-refresher>
+                    <!-- End refresh-->
+                    <ion-list class="account-list">
+                        <ion-item data-ng-repeat="account in serviceData | orderBy : account.date : servicing.sortBy.val | listFilter:filter">
+                            <span class="name">{{account.name}}</span>
+                            <span class="branch" data-ng-if="account.branch!==''"><span>Branch No:</span> {{account.branch}}</span>
+                            <span class="num" data-ng-if="account.num !==''">Account No: {{account.num}}</span>
+                            <span class="type calm">{{account.type}}</span>
+                            <span class="branch" data-ng-if="account.transaction!==''"><span>Transaction:</span> {{account.transaction}}</span>
+                            <span class="details" data-ng-if="account.details!==''"><span>Details:</span> {{account.details}}</span>
+                            <div class="amount">
+                                <span class="date">{{account.date}}</span>
+                                <span class="time">{{account.time}}</span>
+                                <span class="val {{account.amount>0?'dark':'assertive'}}" data-ng-if="account.amount!==''">$ {{account.amount|number:2}}</span>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+
+
+                    <ion-infinite-scroll
+                            on-infinite="loadMoreService()"
+                            distance="0" class="infinite-scroll">
+                    </ion-infinite-scroll>
+                </ion-scroll>
+            </ion-slide>
+
+            <ion-slide>
+                <div class="tab-bar row">
+                    <a href="javascript:" data-ng-click="activeTab='referral'" class="col {{activeTab==='referral'?'active':''}}">Referral</a>
+                    <a href="javascript:" data-ng-click="activeTab='opportunity'" class="col {{activeTab==='opportunity'?'active':''}}">Opportunities</a>
+                </div>
+
+                <ion-scroll data-ng-if="activeTab==='referral'">
+
+                    <ion-refresher
+                            pulling-text="Pull to refresh..."
+                            on-refresh="doRefresh()">
+                    </ion-refresher>
+                    <!-- End refresh-->
+                    <ion-list class="account-list referrals">
+                        <ion-item data-ng-repeat="referral in referrals">
+                            <span class="title">{{referral.title}}</span>
+                            <span class="info">
+                                <span class="label">Name</span>
+                                <span class="val"> : {{referral.name}}</span>
+                            </span>
+                            <span class="info">
+                                <span class="label">Method of Contact</span>
+                                <span class="val"> : {{referral.phone}}</span>
+                            </span>
+                            <span class="info">
+                                <span class="label">Product of Interest</span>
+                                <span class="val"> : {{referral.product}}</span>
+                            </span>
+                            <a href="#/app/profile" data-ui-sref="app.referralDetails" class="link"></a>
+                        </ion-item>
+                    </ion-list>
+
+
+                    <ion-infinite-scroll
+                            on-infinite="loadMoreReferrals()"
+                            distance="0" class="infinite-scroll">
+                    </ion-infinite-scroll>
+                </ion-scroll>
+
+                <ion-scroll data-ng-if="activeTab==='opportunity'">
+
+                    <ion-refresher
+                            pulling-text="Pull to refresh..."
+                            on-refresh="doRefresh()">
+                    </ion-refresher>
+                    <!-- End refresh-->
+                    <ion-list class="account-list referrals">
+                        <ion-item data-ng-repeat="opp in opportunity">
+                            <span class="title">{{opp.title}}</span>
+                            <span class="info">
+                                <span class="label">Name</span>
+                                <span class="val"> : {{opp.name}}</span>
+                            </span>
+                            <span class="info">
+                                <span class="label">Method of Contact</span>
+                                <span class="val"> : {{opp.phone}}</span>
+                            </span>
+                            <span class="info">
+                                <span class="label">Product of Interest</span>
+                                <span class="val"> : {{opp.product}}</span>
+                            </span>
+                            <span class="info">
+                                <span class="label">Product of Interest</span>
+                                <span class="val"> : {{opp.funding}}</span>
+                            </span>
+                            <a href="#/app/profile" data-ui-sref="app.referralDetails" class="link"></a>
+                        </ion-item>
+                    </ion-list>
+
+
+                    <ion-infinite-scroll
+                            on-infinite="loadMoreOpportunity()"
+                            distance="0" class="infinite-scroll">
+                    </ion-infinite-scroll>
+                </ion-scroll>
+
+            </ion-slide>
+
+        </ion-slide-box>
+        <!-- End slid-box-->
+
+
+    </ion-content>
+    <!-- End content-->
+
+    <ion-footer-bar align-title="left" class="">
+        <a href="javascript:" class="col active calm" data-ui-sref="app.createService">Create Service Request</a>
+        <a href="javascript:" class="col dark" data-ui-sref="app.createReferral">Create Refferal</a>
+    </ion-footer-bar>
+
+</ion-view>

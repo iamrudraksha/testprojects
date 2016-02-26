@@ -1,0 +1,85 @@
+<ion-view  class="search-view">
+
+    <ion-nav-bar class="bar bar-header bar-calm item-input-inset search-header" align-title="center">
+        <ion-nav-buttons>
+            <!-- Search-->
+            <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <a href="javascript:" class="icon ion-mic"></a>
+                <input type="search" placeholder="Search">
+            </label>
+
+            <!-- Toggle right side menu -->
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content class="search-results">
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <!-- End refresh-->
+
+
+        <div class="sub-header relative bar bar-energized">
+            <div class="filters clearfix">
+                <a href="javascript:" data-ng-click="openSortPopover($event)" class="sort-by {{sortPopup?'open':''}}">Sort By</a>
+                <a href="javascript:" data-ng-click="openLocationPopover($event)" class="location {{locaationPopup?'open':''}}">Location</a>
+            </div>
+        </div>
+
+        <div class="recent-view fluid {{recentView.open?'open':''}}">
+            <a href="javascript:" class="header" data-ng-click="toggleView()">Recently Viewed ({{recentView.views.length}})<i></i></a>
+            <ion-scroll direction="x">
+                <a href="javascript:" data-ui-sref="app.profile" class="viewer"
+                     ng-repeat="rv in recentView.views">
+                    <span class="code">{{rv.code}}</span>
+                    {{rv.name}}
+                </a>
+            </ion-scroll>
+        </div>
+        <!-- End recent-view-->
+
+        <ion-list
+                can-swipe="listCanSwipe" class="search-result-list">
+            <ion-item delegate-handle="onSwipeLeft(item)" ng-repeat="item in searchResults | orderBy : item.name : sortBy.option[0].checked"
+                      class="item-thumbnail-left">
+
+                <span class="thumb">{{item.code}}</span>
+                <span class="name">{{item.name}}</span>
+                <span class="address">{{item.address1}}</span>
+                <span class="address">{{item.address2}}</span>
+                <a href="javascript:" data-ng-click="openPhoneModal()" class="phone" >{{item.phone}}</a>
+                <a href="javascript:" data-ng-click="openEmailModal()" class="email">{{item.email}}</a>
+
+                <div class="status-distance">
+                    <span class=" {{item.include==='Consumer'?'energized':'balanced'}}">{{item.include}}</span>
+                    <button class="button button-small button-calm">{{item.distance}}</button>
+                </div>
+
+                <a href="javascript:" data-ui-sref="app.profile" class="link"></a>
+
+                <ion-option-button class="button-balanced"
+                                   ng-click="request(item)" data-ui-sref="app.createService">
+                    <i class="request"></i>
+                    <span>Create Service<br/> Request</span>
+                </ion-option-button>
+                <ion-option-button class="button-energized"
+                                   ng-click="refferel(item)" data-ui-sref="app.createReferral">
+                    <i class="referral"></i>
+                    <span>Create <br/> Referral</span>
+                </ion-option-button>
+
+            </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll
+                on-infinite="loadMore()"
+                distance="0" class="infinite-scroll">
+        </ion-infinite-scroll>
+
+    </ion-content>
+
+</ion-view>
+<!-- Main content, usually-->

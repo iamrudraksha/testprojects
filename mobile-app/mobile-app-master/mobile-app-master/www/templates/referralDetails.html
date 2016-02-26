@@ -1,0 +1,25 @@
+<ion-view title="Referral Detail" class="referral-page">
+
+    <ion-nav-bar class="bar bar-header bar-calm" align-title="center">
+        <ion-nav-buttons side="left">
+            <button side="left" class="button button-icon button-back" data-ui-sref="app.profile"><span>Back<br/>to Sales</span></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <!-- Toggle right side menu -->
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content>
+        <div class="header">
+            <span class="title">{{referralDetails.title}}</span>
+            <span class="name">Branch Manager: <span>{{referralDetails.manager}}</span></span>
+        </div>
+        <div class="content">
+            <p data-ng-repeat="paragraph in referralDetails.desc track by $index" data-ng-bind-html="paragraph">{{paragraph}}</p>
+        </div>
+
+    </ion-content>
+    <!-- End content-->
+
+</ion-view>

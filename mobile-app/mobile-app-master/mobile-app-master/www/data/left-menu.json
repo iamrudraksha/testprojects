@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Jane Doe",
+    "thumb": "JD",
+    "email": "email@email.com",
+    "menu": [
+      {
+        "name": "Home",
+        "sref": "app.findCustomers",
+        "class": "home"
+      },
+      {
+        "name": "Search History",
+        "sref": "app.history",
+        "class": "search"
+      },
+      {
+        "name": "Help/FAQ",
+        "class": "help"
+      },
+      {
+        "name": "Logout",
+        "sref": "login",
+        "class": "logout"
+      }
+    ]
+  }
+]

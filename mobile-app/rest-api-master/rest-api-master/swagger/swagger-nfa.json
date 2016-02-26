@@ -1,0 +1,1147 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Bank Ambassador API",
+        "description": "Sample REST API for the Bank Ambassador application.",
+        "version": "1.0.0"
+    },
+    "host": "localhost:4000",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "summary": "Login",
+                "description": "Endpoint to authenticating user",
+                "parameters": [
+                    {
+                        "name": "credentials",
+                        "description": "user's login credentials",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Credentials"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "it will returns access token to be used for future API communications",
+                        "schema": {
+                            "$ref": "#/definitions/AccessToken"
+                        }
+                    }
+                }
+            }
+        },
+        "/me": {
+            "get": {
+                "summary": "Get logged in user.",
+                "description": "endpiont to get user of logged in user",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "the account object",
+                        "schema": {
+                            "$ref": "#/definitions/Account"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/search/accounts": {
+            "get": {
+                "summary": "Search user accounts",
+                "description": "This endpoint search accounts listing and it's history",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "represents the search keywords",
+                        "required": false,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "distance",
+                        "description": "represents the radious distance to filter accounts",
+                        "in": "query",
+                        "type": "number",
+                        "format": "string"
+                    },
+                    {
+                        "name": "clientType",
+                        "description": "represents the client type to include in the results",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string",
+                        "required": false
+                    },
+                    {
+                        "name": "sortType",
+                        "description": "represents the sort column to use to sort results",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sortOrder",
+                        "description": "represents the sort direction, either asc or desc",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Offset the list of returned results by this amount. Default is zero."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Number of items to retrieve. Default is 10, maximum is 100."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of accounts",
+                        "schema": {
+                            "$ref": "#/definitions/Accounts"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}": {
+            "get": {
+                "summary": "User Account Details",
+                "description": "Get user account details.",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "id",
+                        "description": "account identifier",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns user account object",
+                        "schema": {
+                            "$ref": "#/definitions/Account"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}/profile": {
+            "get": {
+                "summary": "the user profile",
+                "description": "get the user profile",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "id",
+                        "description": "account identifier",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "string"
+                    },
+                    {
+                        "name": "duration",
+                        "in": "query",
+                        "description": "this is used to pull account balance history, it can be one of the values - 1_m, 3_m, 6_m, 1_y, 2_y",
+                        "required": false,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns user profile object",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}/profile/relations": {
+            "get": {
+                "summary": "get customer relationship information",
+                "description": "get the user customer relationship information",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "id",
+                        "description": "account identifier",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns user customer relationship",
+                        "schema": {
+                            "$ref": "#/definitions/CustomerRelationship"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}/bankAccounts": {
+            "get": {
+                "summary": "User bank accounts",
+                "description": "this endpoints retrieves users bank accounts list",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "id",
+                        "description": "account identifier",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sortType",
+                        "description": "represents the sort column to use to sort results",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sortOrder",
+                        "description": "represents the sort direction, either asc or desc",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Offset the list of returned results by this amount. Default is zero."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Number of items to retrieve. Default is 10, maximum is 100."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns list of bank accounts of the given user",
+                        "schema": {
+                            "$ref": "#/definitions/BankAccounts"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}/services": {
+            "get": {
+                "summary": "User account services",
+                "description": "this endpoints retrieves services provided to the user account",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "id",
+                        "description": "account identifier",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sortType",
+                        "description": "represents the sort column to use to sort results",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sortOrder",
+                        "description": "represents the sort direction, either asc or desc",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Offset the list of returned results by this amount. Default is zero."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Number of items to retrieve. Default is 10, maximum is 100."
+                    },
+                    {
+                        "name": "filterBy",
+                        "description": "represents the service type to filter the list",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns list of services",
+                        "schema": {
+                            "$ref": "#/definitions/Services"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}/sales": {
+            "get": {
+                "summary": "User's related sales resources",
+                "description": "this endpoints pull sales referrals and opportunities",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sortType",
+                        "description": "represents the sort column to use to sort results",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sortOrder",
+                        "description": "represents the sort direction, either asc or desc",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Offset the list of returned results by this amount. Default is zero."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Number of items to retrieve. Default is 10, maximum is 100."
+                    },
+                    {
+                        "name": "id",
+                        "description": "the account identifier",
+                        "in": "path",
+                        "type": "integer",
+                        "format": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "represnts the sales resource, either 'referral' or 'opportunity'",
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns list of sales objects",
+                        "schema": {
+                            "$ref": "#/definitions/SalesResources"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}/sales/{type}/{salesId}": {
+            "get": {
+                "summary": "The sales resource details",
+                "description": "this endpoints gets the sales resource details",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "id",
+                        "description": "user account id",
+                        "in": "path",
+                        "type": "integer",
+                        "format": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "type",
+                        "description": "sales type, can be 'referral' or 'opportunity'",
+                        "in": "path",
+                        "type": "string",
+                        "format": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "salesId",
+                        "in": "path",
+                        "description": "represents the sales resource id",
+                        "format": "string",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "returns a sales object",
+                        "schema": {
+                            "$ref": "#/definitions/SalesResource"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/services": {
+            "post": {
+                "summary": "New Service Request",
+                "description": "Submitting a new service request.",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "service",
+                        "description": "service entity to create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResource"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Indicates a successful creation"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sales": {
+            "post": {
+                "summary": "New sales request",
+                "description": "Submit new sales request",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "Sales",
+                        "description": "sales resource to create",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Sales"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/services/types": {
+            "get": {
+                "summary": "Service types",
+                "description": "this endpionts pull service types",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Lookup"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sales/productsOfInterest": {
+            "get": {
+                "summary": "Sales products of interest",
+                "description": "this is a lookup endpoint to retrieve products of interest lookup values",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "the Authorization header. For ex: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uIjoxNDUzNDU0MjU2MzE4LCJ1c2VySWQiOjF9.vvZum8106hymCluHRjls1H2k62GPwoScb06wPIRest4",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Lookup"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceResource": {
+            "properties": {
+                "accountId": {
+                    "type": "integer",
+                    "description": "the associated account id"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "service title"
+                },
+                "details": {
+                    "type": "string",
+                    "description": "represents the service details"
+                },
+                "serviceType": {
+                    "type": "integer",
+                    "description": "the service type identifier"
+                },
+                "date": {
+                    "type": "string",
+                    "description": "the service date"
+                },
+                "amount": {
+                    "type": "string",
+                    "description": "the transaction amount"
+                }
+            }
+        },
+        "AccessToken": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "represents login access token."
+                }
+            }
+        },
+        "BankAccount": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "bank account id"
+                },
+                "accountId": {
+                    "type": "integer",
+                    "description": "the associated account id"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "the account type, i.e. current, savings .. etc"
+                },
+                "balance": {
+                    "type": "string",
+                    "description": "the account balance"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "bank account name"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "the bank account status, i.e. closed, open"
+                }
+            }
+        },
+        "BankAccounts": {
+            "properties": {
+                "offset": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Position in pagination."
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of items to retrieve (100 max)."
+                },
+                "count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Total number of items available."
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BankAccount"
+                    }
+                }
+            }
+        },
+        "Service": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "service identifier"
+                },
+                "accountId": {
+                    "type": "integer",
+                    "description": "the associated account id"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "service name"
+                },
+                "bankAccount": {
+                    "description": "the associated bank account with the service",
+                    "$ref": "#/definitions/BankAccount"
+                },
+                "details": {
+                    "type": "string",
+                    "description": "represents the service details"
+                },
+                "date": {
+                    "type": "string",
+                    "description": "the service date"
+                },
+                "amount": {
+                    "type": "string",
+                    "description": "the transaction amount"
+                }
+            }
+        },
+        "Services": {
+            "properties": {
+                "offset": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Position in pagination."
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of items to retrieve (100 max)."
+                },
+                "count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Total number of items available."
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Service"
+                    }
+                }
+            }
+        },
+        "Sales": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "sales type, valid values are 'referral' and 'opportunity'"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the resource name"
+                },
+                "accountId": {
+                    "type": "integer",
+                    "description": "the associated account id"
+                },
+                "managerName": {
+                    "type": "string",
+                    "description": "branch manager name"
+                },
+                "methodOfContact": {
+                    "type": "string",
+                    "description": "the method of contact"
+                },
+                "productOfInterest": {
+                    "type": "integer",
+                    "description": "the product of interest identifier"
+                },
+                "fundLevel": {
+                    "type": "string",
+                    "description": "fund level (mainly for opportunity sales resource)"
+                },
+                "details": {
+                    "type": "string",
+                    "description": "the resource details"
+                }
+            }
+        },
+        "SalesResource": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "sales id"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "sales type, valid values are 'referral' and 'opportunity'"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the resource name"
+                },
+                "accountId": {
+                    "type": "integer",
+                    "description": "the associated account id"
+                },
+                "managerName": {
+                    "type": "string",
+                    "description": "branch manager name"
+                },
+                "methodOfContact": {
+                    "type": "string",
+                    "description": "the method of contact"
+                },
+                "productOfInterest": {
+                    "type": "integer",
+                    "description": "the product of interest identifier"
+                },
+                "fundLevel": {
+                    "type": "string",
+                    "description": "fund level (mainly for opportunity sales resource)"
+                },
+                "details": {
+                    "type": "string",
+                    "description": "the resource details"
+                }
+            }
+        },
+        "SalesResources": {
+            "properties": {
+                "offset": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Position in pagination."
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of items to retrieve (100 max)."
+                },
+                "count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Total number of items available."
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SalesResource"
+                    }
+                }
+            }
+        },
+        "Account": {
+            "description": "represents the User Account",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "the primary key"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name of the user."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name of the user."
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address of the user"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "Phone number of the user"
+                },
+                "photoUrl": {
+                    "type": "string",
+                    "description": "the user photo URL"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "represents the accont type, i.e. consumer, commerical .. etc"
+                },
+                "distance": {
+                    "type": "string",
+                    "description": "represents the distance between app user and the user account"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "represents the account user's username"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                }
+            }
+        },
+        "Profile": {
+            "description": "represents the user profile summary",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "the primary key"
+                },
+                "totalAccountBalance": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "represents total account balance"
+                },
+                "accountId": {
+                    "type": "integer",
+                    "description": "the associated account id"
+                },
+                "balanceHistoryDuration": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "represnts the balance history duration"
+                },
+                "balanceHistory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BalanceHistory"
+                    }
+                },
+                "totalSavings": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "total account savings"
+                },
+                "totalChecking": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "total account checking"
+                },
+                "totalLoans": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "total account loans"
+                },
+                "totalCreditCard": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "total credit card amount"
+                }
+            }
+        },
+        "CustomerRelationship": {
+            "description": "represents the customer relationship information",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "the primary key"
+                },
+                "accountId": {
+                    "type": "integer",
+                    "description": "the associated account id"
+                },
+                "conversations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QuestionAnswer"
+                    }
+                }
+            }
+        },
+        "QuestionAnswer": {
+            "description": "this model represents a single question about customer relation with the answer",
+            "properties": {
+                "question": {
+                    "type": "string",
+                    "description": "represents a question"
+                },
+                "answer": {
+                    "type": "string",
+                    "description": "represents an answer"
+                }
+            }
+        },
+        "BalanceHistory": {
+            "description": "represents account balance history",
+            "properties": {
+                "amount": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "represents balance amount"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "represents the balance date"
+                }
+            }
+        },
+        "Accounts": {
+            "properties": {
+                "offset": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Position in pagination."
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of items to retrieve (100 max)."
+                },
+                "count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Total number of items available."
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Account"
+                    }
+                }
+            }
+        },
+        "Address": {
+            "properties": {
+                "streetAddress": {
+                    "type": "string",
+                    "description": "street name"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "the city name"
+                },
+                "province": {
+                    "type": "string",
+                    "description": "city province"
+                },
+                "postalCode": {
+                    "type": "string",
+                    "description": "postal code"
+                }
+            }
+        },
+        "Lookup": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Lookup identifier"
+                },
+                "display": {
+                    "type": "string",
+                    "description": "Lookup text to be displayed in pick list"
+                }
+            }
+        },
+        "Credentials": {
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "format": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "format": "string"
+                }
+            }
+        },
+        "Error": {
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
