@@ -1,5 +1,6 @@
 <?php
-$str = " 5==0 ? 0 : 5==1 ? 1 : 5==2 ? 2 : 5%100>=3 && 5%100<=10 ? 3 : 5%100>=11 ? 4 : 5" ;
+$str = " 5%10==1 && 5%100!=11 ? 0 : 5%10>=2 && 5%10<=4 && (5%100<10 || 5%100>=20) ? 1 : 2" ;
+/*" 5%10==1 && 5%100!=11 ? 0 : 5%10>=2 && 5%10<=4 && (5%100<10 || 5%100>=20) ? 1 : 2"*/
 /*"5==0 ? 0 : 5==1 ? 1 : 5==2 ? 2 : 5%100>=3 && n%100<=10 ? 3 : 5%100>=11 ? 4 : 5";*/
 $num = 0;
 $var = 0;
@@ -9,7 +10,16 @@ $ans = 0;
 $k=0;
 function push_into_stack($var){
 	global $stk;
-	if(empty($stk)||$var=="&&"||$var=="||"){
+	if(empty($stk)||$var==="&&"||$var==="||"){
+		if($var==true){
+			echo "true is pushed\n";
+		}
+		else if($var==false)
+			echo "false is pushed\n";
+		else if($var=="&&"){
+			echo "&& is pushed\n";
+		}
+		else echo "|| is pushed\n";
 		array_push($stk, $var);
 	}
 	else if($stk[count($stk)-1]=="&&" || $stk[count($stk)-1]=="||" ){
@@ -53,6 +63,7 @@ function nextnum($i){
 	while(!ctype_digit(substr($str,$i,1)))
 		$i++;
 	if(ctype_digit(substr($str,$i,1))){
+		echo "number\n";
 		$c = $i;
 		while(ctype_digit(substr($str,$i,1))){
 			$i++;
@@ -71,6 +82,7 @@ while($i<strlen($str)){
 	}
 	#saves the number if it occurs
 	if(ctype_digit(substr($str,$i,1))){
+		echo "number\n";
 		$c = $i;
 		while(ctype_digit(substr($str,$i,1))){
 			$i++;
@@ -86,12 +98,14 @@ while($i<strlen($str)){
 			case "=":
 				$i++;
 				if(substr($str,$i,1)=="="){
+					echo "==\n";
 					$var = $num==nextnum($i);
 					$ans = $var;
 					push_into_stack($var);
 				}
 				break;
 			case "!":
+				echo "!=\n";
 				$i++;
 				$var = $num!=nextnum($i);
 				$ans = $var;
@@ -100,11 +114,13 @@ while($i<strlen($str)){
 			case "<":
 				$i++;
 				if(ctype_digit(substr($str,$i,1))){
+					echo "<\n";
 					$var = $num<nextnum($i);
 					$ans = $var;
 					push_into_stack($var);
 				}
 				else{
+					echo "<=\n";
 					$var = $num<=nextnum($i);
 					$ans = $var;
 					push_into_stack($var);
@@ -113,11 +129,13 @@ while($i<strlen($str)){
 			case ">":
 				$i++;
 				if(ctype_digit(substr($str,$i,1))){
+					echo ">\n";
 					$var = $num>nextnum($i);
 					$ans = $var;
 					push_into_stack($var);
 				}
 				else{
+					echo ">=\n";
 					$var = $num>=nextnum($i);
 					$ans = $var;
 					push_into_stack($var);
@@ -131,10 +149,12 @@ while($i<strlen($str)){
 	if(substr($str,$i,1)=="%"||substr($str, $i,1)=="/"){
 		switch(substr($str,$i,1)){
 			case "%":
+				echo "%\n";
 				$i++;
 				$num = $num%nextnum($i);
 				break;
 			case "/":
+				echo "/\n";
 				$i++;
 				$num = $num/nextnum($i);
 				break;
@@ -144,6 +164,7 @@ while($i<strlen($str)){
 	if(substr($str,$i,1)=="?"||substr($str, $i,1)==":"){
 		switch(substr($str, $i,1)){
 			case "?":
+				echo "?\n";
 				if(array_pop($stk)){
 					$ans = nextnum($i);
 					echo $ans + " is answer";
@@ -152,6 +173,7 @@ while($i<strlen($str)){
 				$i++;
 				break;
 			case ":":
+				echo ":\n";
 				$i++;
 				continue 2;
 		}
@@ -160,20 +182,24 @@ while($i<strlen($str)){
 	if(substr($str,$i,1)=="&"||substr($str, $i,1)=="|"||substr($str, $i,1)=="("||substr($str, $i,1)==")"){
 		switch (substr($str,$i,1)) {
 			case "&":
+				echo "&&\n";
 				$i++;
 				array_push($stk, "&&");
 				$i++;
 				break;
 			case "|":
+				echo "||\n";
 				$i++;
 				array_push($stk, "||");
 				$i++;
 				break;
 			case "(":
+				echo "(\n";
 				$i++;
 				array_push($stk, "(");
 				break;
 			case ")":
+				echo ")\n";
 				$c = 0;
 				while($var!=")"){
 					$var = array_pop($stk);
