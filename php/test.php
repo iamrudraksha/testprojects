@@ -1,3 +1,4 @@
+//Naveen added comment here
 <?php
 	$stk = array();
 	function push_into_stack($var){
