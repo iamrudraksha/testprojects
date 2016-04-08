@@ -6,7 +6,7 @@
   <!-- Schema.org markup for Google+ -->
   <meta itemprop="name" content="{{CD.challenge.challengeName}}">
   <meta itemprop="description" content="{{CD.challenge.detailedRequirements | htmlToText }}">
- <!--mallu solved this bug --->
+
   <!-- Twitter Card data -->
   <meta name="twitter:site" content="@topcoder">
   <meta name="twitter:title" content="{{CD.challenge.challengeName}}">
